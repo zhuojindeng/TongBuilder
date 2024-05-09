@@ -47,13 +47,14 @@ namespace TongBuilder.Application.Business
             var claims = new Claim[] { new Claim(ClaimTypes.Name, userLoginModel.UserName), new Claim(ClaimTypes.Role, "Admin") };
             //用户标识
             var identity = new ClaimsIdentity(userLoginModel.LoginMode);
-            identity.AddClaims(claims);           
+            identity.AddClaims(claims);
             // set CurrentUser
+            CurrentUser = new ClaimsPrincipal(identity);
             using (_iCurrentUser.Change(CurrentUser))
             {
 
             }
-            return new UserLoginResultModel();
+            return new UserLoginResultModel() { Succeeded = true };
         }
 
         public async Task Logout()

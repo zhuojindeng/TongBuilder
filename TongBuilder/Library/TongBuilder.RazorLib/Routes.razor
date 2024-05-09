@@ -2,7 +2,7 @@
 @using Microsoft.AspNetCore.Components.Authorization
 @using TongBuilder.RazorLib.Components
 
-<CascadingAuthenticationState>
+@* <CascadingAuthenticationState> *@
 <Router AppAssembly="@GetType().Assembly">
     <Found Context="routeData">
          <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(Components.Layout.MainLayout)" > 
@@ -28,7 +28,7 @@
         </LayoutView>
     </NotFound>
 </Router>
-</CascadingAuthenticationState>
+@* </CascadingAuthenticationState> *@
 <AntContainer />
 
 @code {
