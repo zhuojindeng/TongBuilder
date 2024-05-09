@@ -1,0 +1,37 @@
+﻿@using Microsoft.Extensions.Primitives
+
+@*<div class="jumbotron">
+    <h1>登出提示</h1>
+    <p class="lead text-middle">确认退出系统吗?</p>
+
+    <form asp-controller="Authorization" asp-action="Logout" method="post">*@
+        @* Flow the request parameters so they can be received by the LogoutPost action: *@
+@*        @foreach (var parameter in Context.Request.HasFormContentType ?
+          (IEnumerable<KeyValuePair<string, StringValues>>)Context.Request.Form : Context.Request.Query)
+        {
+                <input type="hidden" name="@parameter.Key" value="@parameter.Value" />
+        }
+
+        <input class="btn btn-lg btn-success" name="Confirm" type="submit" value="确认退出" />
+    </form>
+</div>*@
+
+
+    <h1>
+        思伟认证中心
+    </h1>
+    <div class="logout-box">
+        <p class="logout-tips">确认退出系统吗?</p>
+
+        <form asp-controller="Authorization" asp-action="Logout" method="post">
+            <!--@* Flow the request parameters so they can be received by the LogoutPost action: *@-->
+            @foreach (var parameter in Context.Request.HasFormContentType ?
+                   (IEnumerable<KeyValuePair<string, StringValues>>)Context.Request.Form : Context.Request.Query)
+            {
+                <input type="hidden" name="@parameter.Key" value="@parameter.Value" />
+            }
+
+            <input class="btn btn-lg btn-success logout-back" name="Confirm" type="submit" value="返回" />
+            <input class="btn btn-lg btn-success logout-confirm" name="Confirm" type="submit" value="确认退出" />
+        </form>
+    </div>

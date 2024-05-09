@@ -1,0 +1,30 @@
+﻿@model TongBuilder.SSOServer.ViewModels.LoginViewModel
+
+<h1>
+    思伟认证中心
+</h1>
+<div class="third-party-login">
+    @if (ViewData["Success"] != null && (bool)ViewData["Success"] == false)
+    {
+        <form asp-controller="Account" asp-action="Login" method="get">
+            <div class="login-validated login-validated-failed">@ViewData["Info"]</div>
+            <input type="hidden" asp-for="ReturnUrl" value="@ViewData["ReturnUrl"]" />
+            <button type="submit" class="btn btn-dark btn-block mt-3">返回</button>
+        </form>
+    }
+    else
+    {
+        <form autocomplete="off" asp-route="LoginThirdParty">
+            <input type="hidden" asp-for="ReturnUrl" value="@ViewData["ReturnUrl"]" />
+            <input type="hidden" asp-for="AuthCode" value="@ViewData["AuthCode"]" />
+            <input type="hidden" asp-for="AuthCodeType" value="@ViewData["AuthCodeType"]" />
+            <input type="hidden" asp-for="Username" value="defaultName" />
+            <input type="hidden" asp-for="Password" value="defaultPassword" />
+            <div class="login-validated">@ViewData["Info"]</div>
+            <div class="login-tips">请点击下方按钮登录</div>
+            <button type="submit" class="btn btn-dark btn-block mt-3">登录</button>
+        </form>
+    }
+</div>
+@{
+}

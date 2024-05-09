@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Library\TongBuilder.Application.Server\TongBuilder.Application.Server.csproj" />
+    <ProjectReference Include="..\..\..\Library\TongBuilder.Application\TongBuilder.Application.csproj" />
+    <ProjectReference Include="..\TongBuilder.BlazorWeb.Client\TongBuilder.BlazorWeb.Client.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.3" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.8" />
+  </ItemGroup>
+
+</Project>

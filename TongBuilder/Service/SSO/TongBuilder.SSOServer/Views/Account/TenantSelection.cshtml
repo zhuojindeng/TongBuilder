@@ -1,0 +1,58 @@
+﻿@using Microsoft.Extensions.Primitives
+@model TongBuilder.SSOServer.ViewModels.TenantViewModel
+
+<h1>
+    TongBuilder认证中心
+</h1>
+<div class="tenant-box">
+    <div class="login-tenant-tips">请选择您的所属机构：</div>
+    @if ((bool)ViewData["ThirdPartyLogin"])
+    {
+        <form asp-controller="Account" asp-action="ExchangeTenant" method="post">
+            @* Flow the request parameters so they can be received by the Exchange actions: *@
+            @foreach (var parameter in Context.Request.HasFormContentType ?
+           (IEnumerable<KeyValuePair<string, StringValues>>)Context.Request.Form : Context.Request.Query)
+            {
+                @if (parameter.Key != "__RequestVerificationToken")
+                {
+                    <input type="hidden" name="@parameter.Key" value="@parameter.Value" />
+                }
+            }
+
+            <ul class="login-tenant-list">
+                @foreach (var tenant in Model.TenantList)
+                {
+                    <li><a href="#" onclick="GetTenant('@tenant.Code',$(this));">@tenant.Name</a></li>
+                }
+            </ul>
+            <input type="hidden" id="tenant" name="Tenant" value="@Model.TenantList.FirstOrDefault().Code" />
+            <button type="submit" class="login-tenant-confirm">确认</button>
+        </form>
+    }
+    else
+    {
+        <form asp-controller="Account" asp-action="LoginWithTenant" method="post">
+            @* Flow the request parameters so they can be received by the Exchange actions: *@
+            @foreach (var parameter in Context.Request.HasFormContentType ?
+           (IEnumerable<KeyValuePair<string, StringValues>>)Context.Request.Form : Context.Request.Query)
+            {
+                @if (parameter.Key != "__RequestVerificationToken")
+                {
+                    <input type="hidden" name="@parameter.Key" value="@parameter.Value" />
+                }
+            }
+
+            <ul class="login-tenant-list">
+                @foreach (var tenant in Model.TenantList)
+                {
+                    <li><a href="#" onclick="GetTenant('@tenant.Code',$(this));">@tenant.Name</a></li>
+                }
+            </ul>
+            <input type="hidden" id="tenant" name="Tenant" value="@Model.TenantList.FirstOrDefault().Code" />
+            <button type="submit" class="login-tenant-confirm">确认</button>
+        </form>
+    }
+</div>
+<script type="text/javascript">window.onload = PageLoaderTenant();</script>
+@{
+}

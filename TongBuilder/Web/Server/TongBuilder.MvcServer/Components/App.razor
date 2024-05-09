@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @* <base href="/" />
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="TongBuilder.MvcServer.styles.css" />
+    <link rel="icon" type="image/png" href="favicon.png" /> *@
+
+    <base href="/" />
+    <link rel="stylesheet" href="_content/TongBuilder.RazorLib/css/bootstrap/bootstrap.min.css" />
+    <link href="_content/TongBuilder.RazorLib/css/app.css" rel="stylesheet" />
+    <link href="TongBuilder.MvcServer.styles.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="_content/TongBuilder.RazorLib/favicon.png" />
+    <link rel="stylesheet" href="_content/AntDesign/css/ant-design-blazor.css" />
+    <link href="_content/AntDesign.ProLayout/css/ant-design-pro-layout-blazor.css" rel="stylesheet" />
+    <HeadOutlet @rendermode="RenderMode.InteractiveServer" />@* 呈现 PageTitle 和 HeadContent 组件提供的内容 *@
+</head>
+
+<body>
+    <TongBuilder.RazorLib.Routes @rendermode="RenderMode.InteractiveServer" /> @* @rendermode="RenderMode.InteractiveServer"  *@
+    <script src="_content/AntDesign/js/ant-design-blazor.js"></script>
+    <script src="_content/AntDesign.Charts/ant-design-charts-blazor.js"></script>
+    <script src="_framework/blazor.web.js"></script>
+</body>
+
+</html>

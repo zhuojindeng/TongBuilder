@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @* <base href="/" />
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="TongBuilder.Server.styles.css" />
+    <link rel="icon" type="image/png" href="favicon.png" /> *@
+
+    <base href="/" />
+    <link rel="stylesheet" href="_content/TongBuilder.RazorLib/css/bootstrap/bootstrap.min.css" />
+    <link href="_content/TongBuilder.RazorLib/css/app.css" rel="stylesheet" />
+    <link href="TongBuilder.Server.styles.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="_content/TongBuilder.RazorLib/favicon.png" />
+    <link rel="stylesheet" href="_content/AntDesign/css/ant-design-blazor.css" />
+    <link href="_content/AntDesign.ProLayout/css/ant-design-pro-layout-blazor.css" rel="stylesheet" />
+    <HeadOutlet @rendermode="RenderMode.InteractiveServer" />
+</head>
+
+<body>
+    @* 默认情况下，可路由页面会使用与呈现页面的 Router 组件相同的呈现模式。*@
+    <TongBuilder.RazorLib.Routes @rendermode="RenderMode.InteractiveServer" />
+    <script src="_content/AntDesign/js/ant-design-blazor.js"></script>    
+    @* <script type="text/javascript" src="https://unpkg.com/@antv/g2plot@2.4.17/dist/g2plot.min.js"></script> *@
+    <script src="_content/AntDesign.Charts/ant-design-charts-blazor.js"></script>
+    <script src="_framework/blazor.web.js"></script>
+</body>
+
+</html>

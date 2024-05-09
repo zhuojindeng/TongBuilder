@@ -1,0 +1,6 @@
+@TongBuilder.Test.WebApi_HostAddress = http://localhost:5272
+
+GET {{TongBuilder.Test.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

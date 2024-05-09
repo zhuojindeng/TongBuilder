@@ -1,0 +1,47 @@
+﻿@inject NavigationManager NavigationManager
+@using Microsoft.AspNetCore.Components.Authorization
+@using TongBuilder.RazorLib.Components
+
+<CascadingAuthenticationState>
+<Router AppAssembly="@GetType().Assembly">
+    <Found Context="routeData">
+         <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(Components.Layout.MainLayout)" > 
+            <NotAuthorized>
+                    @if (context.User.Identity == null || !context.User.Identity.IsAuthenticated)
+                    {
+                        @* <RedirectToLogin /> *@
+                        @RedirectToLogin
+                    }
+                    else
+                    {
+                        <p>You are not authorized to access this resource.</p>
+                    }
+                </NotAuthorized>
+        </AuthorizeRouteView>
+        @* <RouteView RouteData="@routeData" DefaultLayout="@typeof(Components.Layout.MainLayout)" />  *@
+        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+    </Found>
+    <NotFound>
+        <PageTitle>Not found</PageTitle>
+        <LayoutView Layout="@typeof(Components.Layout.MainLayout)">
+            <p role="alert">Sorry, there's nothing at this address.</p>
+        </LayoutView>
+    </NotFound>
+</Router>
+</CascadingAuthenticationState>
+<AntContainer />
+
+@code {
+    private RenderFragment RedirectToLogin => builder =>
+    {
+        var returnUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+        if (string.IsNullOrWhiteSpace(returnUrl))
+        {
+            NavigationManager.NavigateTo("user/login");
+        }
+        else
+        {
+            NavigationManager.NavigateTo($"user/login?returnUrl={Uri.EscapeDataString(returnUrl)}", true);
+        }
+    };
+}

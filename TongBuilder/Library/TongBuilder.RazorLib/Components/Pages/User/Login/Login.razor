@@ -1,0 +1,26 @@
+﻿@layout UserLayout
+@page "/user/login"
+@using TongBuilder.Contract.Models
+@using TongBuilder.RazorLib.Services.Auth
+
+<div class="main__b__0">
+    <div class="login">
+        <Form Model="@_model" OnFinish="HandleSubmit">
+        <Tabs ActiveKey="@context.LoginMode">
+                <TabPane Key="1" Tab="账号登录">
+                    <FormItem>
+                        <AntDesign.Input Placeholder="请输入账号" Size="large" @bind-Value="@context.UserName">
+                            <Prefix><Icon Type="user" /></Prefix>
+                        </AntDesign.Input>
+                    </FormItem>
+                    <FormItem>
+                        <AntDesign.Input Placeholder="请输入密码" Size="large" @bind-Value="@context.Password" Type="password">
+                            <Prefix><Icon Type="lock" /></Prefix>
+                        </AntDesign.Input>
+                    </FormItem>
+                </TabPane>
+            </Tabs>
+            <Button Type="primary" HtmlType="submit" Class="submit" Size="large" Block>登录</Button>
+        </Form>
+    </div>
+</div>
