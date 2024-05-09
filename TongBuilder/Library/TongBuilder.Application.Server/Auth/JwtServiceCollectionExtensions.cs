@@ -4,13 +4,14 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 
 
 namespace TongBuilder.Application.Server.Auth
-{
+{    
     /// <summary>
     /// 客户端身份验证状态提供程序仅在 Blazor 中使用，不与 ASP.NET Core 身份验证系统集成。 
     /// 在预呈现期间，Blazor 尊重页面上定义的元数据，并使用 ASP.NET Core 身份验证系统，
@@ -23,6 +24,7 @@ namespace TongBuilder.Application.Server.Auth
     /// </summary>
     public static class JwtServiceCollectionExtensions
     {
+        const string MS_OIDC_SCHEME = "MicrosoftOidc";
         public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
             // 读取配置
@@ -132,19 +134,34 @@ namespace TongBuilder.Application.Server.Auth
                 options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
             })
-                .AddCookie()
-                .AddOpenIdConnect(options =>
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddOpenIdConnect(MS_OIDC_SCHEME,oidcOptions =>
                 {
-                    options.ClientId = "your_client_id";
-                    options.ClientSecret = "your_client_secret";
-                    options.Authority = "https://your_authority_url/";
-                    options.ResponseType = "code";
-                    options.SaveTokens = true;
-                    options.GetClaimsFromUserInfoEndpoint = true;
-                    options.Scope.Add("openid");
-                    options.Scope.Add("profile");
-                    options.Scope.Add("email");
+                    //设置与身份验证成功后负责保留用户标识的中间件对应的身份验证方案。 OIDC 处理程序需要使用能够跨请求保留用户凭据的登录方案。
+                    oidcOptions.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    oidcOptions.ClientId = "your_client_id";
+                    oidcOptions.ClientSecret = "your_client_secret";
+                    oidcOptions.Authority = "https://your_authority_url/";
+                    oidcOptions.ResponseType = OpenIdConnectResponseType.Code;//OIDC 处理程序使用从授权终结点返回的代码自动请求适当的令牌。
+                    oidcOptions.SaveTokens = true;//定义在授权成功后，是否应在 AuthenticationProperties 中存储访问令牌和刷新令牌。 
+                    oidcOptions.GetClaimsFromUserInfoEndpoint = true;
+                    oidcOptions.Scope.Add("openid");
+                    oidcOptions.Scope.Add("profile");
+                    oidcOptions.Scope.Add("email");
+                    oidcOptions.Scope.Add(OpenIdConnectScope.OfflineAccess);
+                    oidcOptions.MapInboundClaims = false;
+                    oidcOptions.TokenValidationParameters.NameClaimType = JwtRegisteredClaimNames.Name;
+                    oidcOptions.TokenValidationParameters.RoleClaimType = "role";
+                    oidcOptions.CallbackPath = new PathString("/signin-oidc");
+                    oidcOptions.SignedOutCallbackPath = new PathString("/signout-callback-oidc");
+                    oidcOptions.RemoteSignOutPath = new PathString("/signout-oidc");
                 });
+            // ConfigureCookieOidcRefresh attaches a cookie OnValidatePrincipal callback to get
+            // a new access token when the current one expires, and reissue a cookie with the
+            // new access token saved inside. If the refresh fails, the user will be signed
+            // out. OIDC connect options are set for saving tokens and the offline access
+            // scope.
+            services.ConfigureCookieOidcRefresh(CookieAuthenticationDefaults.AuthenticationScheme, MS_OIDC_SCHEME);
             return services;
         }
     }

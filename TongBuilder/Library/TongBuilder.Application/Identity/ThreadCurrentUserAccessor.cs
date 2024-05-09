@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using TongBuilder.Contract.Identity;
 
 namespace TongBuilder.Application.Identity
 {

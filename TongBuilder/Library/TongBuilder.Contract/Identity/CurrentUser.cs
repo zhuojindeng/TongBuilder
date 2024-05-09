@@ -4,7 +4,7 @@ using TongBuilder.Contract.Contracts;
 using TongBuilder.Contract.Enums;
 using TongBuilder.Contract.Extensions;
 
-namespace TongBuilder.Application.Identity
+namespace TongBuilder.Contract.Identity
 {
     public class CurrentUser : ICurrentUser
     {

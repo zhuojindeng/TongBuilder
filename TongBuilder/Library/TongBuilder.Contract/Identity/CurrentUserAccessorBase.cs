@@ -2,7 +2,7 @@
 using TongBuilder.Contract.Contracts;
 using TongBuilder.Contract.Core;
 
-namespace TongBuilder.Application.Identity
+namespace TongBuilder.Contract.Identity
 {
     public abstract class CurrentUserAccessorBase : ICurrentUserAccessor
     {

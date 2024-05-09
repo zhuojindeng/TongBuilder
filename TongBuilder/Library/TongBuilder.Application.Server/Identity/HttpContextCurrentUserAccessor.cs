@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
+using TongBuilder.Contract.Identity;
 
-namespace TongBuilder.Application.Identity
+namespace TongBuilder.Application.Server.Identity
 {
     public class HttpContextCurrentUserAccessor : CurrentUserAccessorBase
     {

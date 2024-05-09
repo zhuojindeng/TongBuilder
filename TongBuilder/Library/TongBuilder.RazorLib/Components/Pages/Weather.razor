@@ -1,6 +1,7 @@
 ﻿@page "/weather"
 @using TongBuilder.Contract.Contracts
 @using TongBuilder.Contract.Models
+@attribute [Authorize]
 @inject IWeatherService ForecastService
 
 <PageTitle>Weather forecast</PageTitle>

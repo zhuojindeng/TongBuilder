@@ -1,7 +1,7 @@
 using TongBuilder.BlazorWeb.Components;
 using TongBuilder.BlazorWeb.Services;
 using TongBuilder.RazorLib.Services;
-using TongBuilder.Application.DependencyInjection;
+using TongBuilder.Application.Server.DependencyInjection;
 using NLog;
 using NLog.Web;
 using TongBuilder.Application.Server.Auth;

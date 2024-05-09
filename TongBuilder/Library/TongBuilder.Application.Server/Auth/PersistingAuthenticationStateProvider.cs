@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 using TongBuilder.Contract.Contracts;
 using System.Diagnostics;
 
-namespace TongBuilder.Application.Auth
+namespace TongBuilder.Application.Server.Auth
 {
     /// <summary>
     /// This is a server-side AuthenticationStateProvider that uses PersistentComponentState to flow the

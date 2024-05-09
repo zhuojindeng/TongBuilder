@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection.Extensions;
+using TongBuilder.Application.Server.Identity;
 using TongBuilder.Contract.Contracts;
-using TongBuilder.Application.Identity;
+using TongBuilder.Contract.Identity;
 
 namespace TongBuilder.Test.WebApi.DependencyInjection
 {

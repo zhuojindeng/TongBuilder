@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Library\TongBuilder.Application\TongBuilder.Application.csproj" />
+    <ProjectReference Include="..\..\..\Library\TongBuilder.Application.Server\TongBuilder.Application.Server.csproj" />
     <ProjectReference Include="..\..\..\Library\TongBuilder.Contract\TongBuilder.Contract.csproj" />
   </ItemGroup>
 
