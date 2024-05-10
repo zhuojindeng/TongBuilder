@@ -12,8 +12,16 @@ namespace TongBuilder.Application.Business
 
         public WeatherService(IHttpClientFactory httpClientFactory, ILogger<WeatherService> logger)
         {
-            _client = httpClientFactory.CreateClient("TongBuilderProxy");
             _logger = logger;
+            try
+            {
+                _client = httpClientFactory.CreateClient("TongBuilderProxy");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("CreateClient TongBuilderProxy: {Error}", ex);                
+            }
+
         }
 
         public async Task<WeatherForecast[]?> GetWeather()

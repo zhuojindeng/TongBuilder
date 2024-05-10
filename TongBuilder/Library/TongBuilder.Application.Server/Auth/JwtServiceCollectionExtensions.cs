@@ -25,12 +25,13 @@ namespace TongBuilder.Application.Server.Auth
     public static class JwtServiceCollectionExtensions
     {
         const string MS_OIDC_SCHEME = "MicrosoftOidc";
+
         public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
             // 读取配置
             services.AddOptions<JwtSetting>();
             services.Configure<JwtSetting>(configuration);
-            var symmetricKeyAsBase64 = configuration["Secret"];
+            var symmetricKeyAsBase64 = configuration["Secret"]?? "25DFF2D613584EFBA8F8025DBE0997B5";
             var issuer = configuration["Issuer"];
             var audience = configuration["Audience"];
 
@@ -56,6 +57,12 @@ namespace TongBuilder.Application.Server.Auth
             // events,服务器可以用来针对客户端的请求发送质询(challenge)，客户端根据质询提供身份验证凭证。
             var jwtBearerEvents = new JwtBearerEvents()
             {
+                OnMessageReceived = context =>
+                {
+                    var accessToken = context.Token;                                       
+                    
+                    return Task.CompletedTask;
+                },
                 OnChallenge = async context =>
                 {
                     // refresh token

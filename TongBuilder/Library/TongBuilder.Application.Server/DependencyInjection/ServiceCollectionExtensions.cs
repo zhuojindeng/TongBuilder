@@ -52,7 +52,7 @@ namespace TongBuilder.Application.Server.DependencyInjection
             //services.AddSingleton<ICurrentUserAccessor, ThreadCurrentUserAccessor>();
             services.AddTransient<ICurrentUser, CurrentUser>();
 
-            services.AddScoped<AuthenticationStateProvider, PersistingAuthenticationStateProvider>();
+            //services.AddScoped<AuthenticationStateProvider, PersistingAuthenticationStateProvider>();
 
             string? tongBuilderservice = configuration["TongBuilderService"] ?? "http://localhost:5272/api";   ////TongBuilder.Test.WebApi         
 
@@ -64,7 +64,7 @@ namespace TongBuilder.Application.Server.DependencyInjection
                     new MediaTypeWithQualityHeaderValue("application/json"));
             }).AddHttpMessageHandler<JwtHandler>();
 
-            //services.AddScoped<AuthenticationStateProvider, PersistingAuthenticationStateProvider>();
+           
             services.AddBlazoredLocalStorage();
             services.AddScoped<IBizProvider, BizProvider>();
             services.AddScoped<IWeatherService, WeatherService>();

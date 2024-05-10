@@ -50,10 +50,11 @@ namespace TongBuilder.Application.Business
             identity.AddClaims(claims);
             // set CurrentUser
             CurrentUser = new ClaimsPrincipal(identity);
-            using (_iCurrentUser.Change(CurrentUser))
-            {
+            _iCurrentUser.Change(CurrentUser);
+            //using (_iCurrentUser.Change(CurrentUser))
+            //{
 
-            }
+            //}
             return new UserLoginResultModel() { Succeeded = true };
         }
 

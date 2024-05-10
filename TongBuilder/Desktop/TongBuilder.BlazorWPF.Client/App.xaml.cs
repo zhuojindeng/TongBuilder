@@ -15,6 +15,10 @@ namespace TongBuilder.BlazorWPF.Client
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            DispatcherUnhandledException += App_DispatcherUnhandledException;
+            TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
 
@@ -22,6 +26,62 @@ namespace TongBuilder.BlazorWPF.Client
 
             var mainWindow = serviceProvider.GetRequiredService<MainWindow>();
             mainWindow.Show();
+        }
+
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            try
+            {
+                var exception = e.ExceptionObject as Exception;
+                if (exception != null)
+                {
+                    HandleException(exception);
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex);
+            }
+            finally
+            {
+                //ignore
+            }
+        }
+
+        private void TaskScheduler_UnobservedTaskException(object? sender, UnobservedTaskExceptionEventArgs e)
+        {
+            try
+            {
+                var exception = e.Exception as Exception;
+                if (exception != null)
+                {
+                    HandleException(exception);
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex);
+            }
+            finally
+            {
+                e.SetObserved();
+            }
+        }
+
+        private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            try
+            {
+                HandleException(e.Exception);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex);
+            }
+            finally
+            {
+                e.Handled = true;
+            }
         }
 
         private void ConfigureServices(IServiceCollection services)
@@ -50,6 +110,11 @@ namespace TongBuilder.BlazorWPF.Client
             Resources.Add("services", services.BuildServiceProvider());
 
 
+        }
+
+        private static void HandleException(Exception ex)
+        {
+            MessageBox.Show("出错了，请与开发人员联系：" + ex.Message);            
         }
     }
 
