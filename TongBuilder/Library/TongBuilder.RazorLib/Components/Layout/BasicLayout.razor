@@ -29,7 +29,7 @@
         await base.OnInitializedAsync();
         try
         {
-            _menuData = await HttpClient.GetFromJsonAsync<MenuDataItem[]>("data/menu.json");
+            _menuData = await HttpClient.GetFromJsonAsync<MenuDataItem[]>("_content/TongBuilder.RazorLib/data/menu.json");
         }
         catch (System.Exception ex)
         {

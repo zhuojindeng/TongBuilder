@@ -64,7 +64,12 @@ namespace TongBuilder.Application.Server.DependencyInjection
                     new MediaTypeWithQualityHeaderValue("application/json"));
             }).AddHttpMessageHandler<JwtHandler>();
 
-           
+            services.AddScoped(provider =>
+            {
+                var factory = provider.GetRequiredService<IHttpClientFactory>();
+                return factory.CreateClient("TongBuilderProxy");
+            });
+
             services.AddBlazoredLocalStorage();
             services.AddScoped<IBizProvider, BizProvider>();
             services.AddScoped<IWeatherService, WeatherService>();

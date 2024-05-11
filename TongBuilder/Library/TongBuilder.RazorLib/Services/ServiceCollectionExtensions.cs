@@ -1,4 +1,5 @@
 ﻿using AntDesign;
+using AntDesignProApp.Services;
 using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.Configuration;
@@ -22,7 +23,13 @@ namespace TongBuilder.RazorLib.Services
 
             services.AddScoped<ModalService>();
             services.AddScoped<MessageService>();
-           
+
+            //services.AddScoped<IChartService, ChartService>();
+            services.AddScoped<IProjectService, ProjectService>();
+            services.AddScoped<IUserService, UserService>();
+            //services.AddScoped<IAccountService, AccountService>();
+            //services.AddScoped<IProfileService, ProfileService>();
+
             services.AddHttpClient();
             services.AddAuthorizationCore();
             services.AddScoped<AuthenticationStateProvider, TongAuthenticationStateProvider>();

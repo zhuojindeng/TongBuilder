@@ -22,7 +22,7 @@ namespace TongBuilder.Wasm
             builder.RootComponents.Add<HeadOutlet>("head::after");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-
+            //https://learn.microsoft.com/zh-cn/aspnet/core/blazor/security/webassembly/additional-scenarios?view=aspnetcore-8.0
             //builder.Services.AddHttpClient("ServerAPI")
             //                .ConfigureHttpClient(client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
             //                .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();//它预先配置了应用基址作为授权的 URL。 仅当请求 URI 在应用的基 URI 中时，才会添加访问令牌。
@@ -40,7 +40,7 @@ namespace TongBuilder.Wasm
                 logging.AddDebug();
             });
 
-            builder.Services.AddClientBusiness(builder.Configuration);//, builder.HostEnvironment.BaseAddress
+            builder.Services.AddClientBusiness(builder.Configuration, builder.HostEnvironment.BaseAddress);//
             builder.Services.AddCommonServices(builder.Configuration);
 
             var host = builder.Build();

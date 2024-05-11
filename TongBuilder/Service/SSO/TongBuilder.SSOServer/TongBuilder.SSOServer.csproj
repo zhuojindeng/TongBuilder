@@ -9,11 +9,11 @@
   <ItemGroup>
     <PackageReference Include="AlibabaCloud.SDK.Dysmsapi20170525" Version="2.0.24" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.4" />
-    <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.8" />
-    <PackageReference Include="OpenIddict.AspNetCore" Version="5.4.0" />
-    <PackageReference Include="OpenIddict.MongoDb" Version="5.4.0" />
-    <PackageReference Include="OpenIddict.Quartz" Version="5.4.0" />
-    <PackageReference Include="Quartz.Extensions.Hosting" Version="3.8.1" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.11" />
+    <PackageReference Include="OpenIddict.AspNetCore" Version="5.5.0" />
+    <PackageReference Include="OpenIddict.MongoDb" Version="5.5.0" />
+    <PackageReference Include="OpenIddict.Quartz" Version="5.5.0" />
+    <PackageReference Include="Quartz.Extensions.Hosting" Version="3.9.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -18,7 +18,7 @@ namespace TongBuilder.Application.DependencyInjection
         public static IServiceCollection AddClientBusiness(this IServiceCollection services, IConfiguration configuration, string? selfurl = null)
         {
             
-            //services.AddTransient<JwtHandler>();
+            services.AddTransient<BaseAddressAuthorizationMessageHandler>();
 
             services.RemoveAll(typeof(ICurrentUserAccessor));
             services.AddSingleton<ICurrentUserAccessor, ThreadCurrentUserAccessor>();

@@ -5,6 +5,8 @@ using NLog.Extensions.Logging;
 using System.Reflection;
 using TongBuilder.RazorLib.Services;
 using TongBuilder.Application.DependencyInjection;
+using TongBuilder.BlazorMaui.Client.Sevices;
+using TongBuilder.Contract.Contracts;
 
 namespace TongBuilder.BlazorMaui.Client
 {
@@ -39,7 +41,7 @@ namespace TongBuilder.BlazorMaui.Client
                 builder.Logging.AddDebug();
 #endif
 
-                
+                builder.Services.AddSingleton<IReadFile, ReadFile>();
 
                 //1：Only for windows
                 //var config = new ConfigurationBuilder().AddJsonFile("wwwroot/appsettings.json").Build();
