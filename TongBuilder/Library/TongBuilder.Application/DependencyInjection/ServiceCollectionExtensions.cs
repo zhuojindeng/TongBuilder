@@ -37,7 +37,7 @@ namespace TongBuilder.Application.DependencyInjection
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue("application/json"));
-            }).AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+            });//.AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
             //services.AddSingleton<AuthenticationStateProvider, PersistentClientAuthenticationStateProvider>();
             services.AddBlazoredLocalStorageAsSingleton();
