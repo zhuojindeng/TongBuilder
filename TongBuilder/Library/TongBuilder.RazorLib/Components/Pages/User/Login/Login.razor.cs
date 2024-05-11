@@ -60,5 +60,11 @@ namespace TongBuilder.RazorLib.Components.Pages.User.Login
 
             }
         }
+
+        public async Task GetCaptcha()
+        {
+            var captcha = await ((TongAuthenticationStateProvider)AuthStateProvider).GetCaptchaAsync(_model.PhoneNumber);
+            await Message.Success($"Verification code validated successfully! The verification code is: {captcha}");
+        }
     }
 }

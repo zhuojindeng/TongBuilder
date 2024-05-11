@@ -18,6 +18,8 @@ namespace TongBuilder.Contract.Contracts
 
         void SetToken(string token);
 
+        Task<string> GetCaptchaAsync(string modile);
+
         Task<OperationResult<UserInfo>> GetUserInfoAsync(CancellationToken cancellationToken = default);
 
         Task<OperationResult<ExternalUser>> GetExternalUserAsync(string loginProvider, string providerKey, CancellationToken cancellationToken = default);

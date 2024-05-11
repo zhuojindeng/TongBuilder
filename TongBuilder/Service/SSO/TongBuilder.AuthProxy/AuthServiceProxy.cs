@@ -16,7 +16,7 @@ namespace TongBuilder.AuthProxy
         public event Action<ClaimsPrincipal>? UserChanged;
 
         private ClaimsPrincipal? currentUser;
-
+        private readonly Random _random = new Random();
         private readonly HttpClient _client;
         private JsonSerializerOptions _options;
         private readonly ILogger<AuthServiceProxy> _logger = null!;
@@ -136,6 +136,12 @@ namespace TongBuilder.AuthProxy
                 failReason = ex.Message;
             }
             return OperationResult<UserInfo>.Failed("-1", $"GetUserInfoAsync 失败:{failReason}");
+        }
+
+        public Task<string> GetCaptchaAsync(string modile)
+        {
+            var captcha = _random.Next(0, 9999).ToString().PadLeft(4, '0');
+            return Task.FromResult(captcha);
         }
     }
 }

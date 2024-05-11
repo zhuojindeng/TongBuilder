@@ -19,8 +19,42 @@
                         </AntDesign.Input>
                     </FormItem>
                 </TabPane>
+                <TabPane Key="2" Tab="手机登录">
+                    <FormItem>
+                        <AntDesign.Input Placeholder="手机号" Size="large" @bind-Value="@context.PhoneNumber">
+                            <Prefix><Icon Type="mobile" /></Prefix>
+                        </AntDesign.Input>
+                    </FormItem>
+                    <FormItem>
+                        <Row Gutter="8">
+                            <AntDesign.Col Span="16">
+                                <AntDesign.Input Placeholder="验证码" Size="large" @bind-Value="@context.VerificationCode">
+                                    <Prefix><Icon Type="mail" /></Prefix>
+                                </AntDesign.Input>
+                            </AntDesign.Col>
+                            <AntDesign.Col Span="8">
+                                <Button Size="large" Block OnClick="GetCaptcha">验证</Button>
+                            </AntDesign.Col>
+                        </Row>
+                    </FormItem>
+                </TabPane>
             </Tabs>
+            <div>
+                <Checkbox Checked="@context.RememberMe">
+                    记住我
+                </Checkbox>
+                <a style="float: right;">
+                    忘记口令
+                </a>
+            </div>
             <Button Type="primary" HtmlType="submit" Class="submit" Size="large" Block>登录</Button>
+            <div class="other">
+                其它登录
+                <Icon Class="icon" Type="alipay-circle" />
+                <Icon Class="icon" Type="taobao-circle" />
+                <Icon Class="icon" Type="weibo-circle" />
+                <a class="register" href="/user/register">注册账户</a>
+            </div>
         </Form>
     </div>
 </div>

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Components;
 using TongBuilder.RazorLib.Models;
 using TongBuilder.RazorLib.Services;
 using Microsoft.AspNetCore.Components.Authorization;
+using AntDesignProApp.Services;
 
 namespace TongBuilder.RazorLib.Components.GlobalHeader
 {
@@ -44,6 +45,8 @@ namespace TongBuilder.RazorLib.Components.GlobalHeader
 
         [Inject] protected NavigationManager NavigationManager { get; set; }
 
+        [Inject] protected IUserService UserService { get; set; }
+
         [Inject] protected IProjectService ProjectService { get; set; }
 
         [Inject]
@@ -55,7 +58,7 @@ namespace TongBuilder.RazorLib.Components.GlobalHeader
         {
             await base.OnInitializedAsync();
             SetClassMap();
-            //_currentUser = await UserService.GetCurrentUserAsync();
+            _currentUser = await UserService.GetCurrentUserAsync();
             var notices = await ProjectService.GetNoticesAsync();
             _notifications = notices.Where(x => x.Type == "notification").Cast<NoticeIconData>().ToArray();
             _messages = notices.Where(x => x.Type == "message").Cast<NoticeIconData>().ToArray();

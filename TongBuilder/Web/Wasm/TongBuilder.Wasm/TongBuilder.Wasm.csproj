@@ -21,6 +21,7 @@
     <Folder Include="Layout\" />
     <Folder Include="Pages\" />
     <Folder Include="Services\" />
+    <Folder Include="wwwroot\assets\" />
   </ItemGroup>
 
   <ItemGroup>

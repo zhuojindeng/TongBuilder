@@ -1,4 +1,5 @@
 ﻿using SiweiSoft.Application;
+using System;
 using System.Security.Claims;
 using TongBuilder.Contract.Contracts;
 using TongBuilder.Contract.Models;
@@ -8,7 +9,7 @@ namespace TongBuilder.Application.Server.Business
     public class AuthService : IAuthService
     {
         public event Action<ClaimsPrincipal>? UserChanged;
-
+        private readonly Random _random = new Random();
         private ClaimsPrincipal? currentUser;
 
         private IBizProvider _iBizProvider;
@@ -80,6 +81,12 @@ namespace TongBuilder.Application.Server.Business
         public Task<OperationResult<UserInfo>> GetUserInfoAsync(CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
+        }
+
+        public Task<string> GetCaptchaAsync(string modile)
+        {
+            var captcha = _random.Next(0, 9999).ToString().PadLeft(4, '0');
+            return Task.FromResult(captcha);
         }
     }
 }
