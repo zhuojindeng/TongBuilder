@@ -61,11 +61,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TongBuilder.Messager.Email"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TongBuilder.Proxy", "Service\TongBuilder.Proxy\TongBuilder.Proxy.csproj", "{EBB23922-1A5F-4520-860D-48E1F8CA7FE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TongBuilder.Application.Server", "Library\TongBuilder.Application.Server\TongBuilder.Application.Server.csproj", "{A2C65576-B588-4D33-908B-0906B9821700}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TongBuilder.Application.Server", "Library\TongBuilder.Application.Server\TongBuilder.Application.Server.csproj", "{A2C65576-B588-4D33-908B-0906B9821700}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{1C4FEB24-0B81-40B3-86DF-FC09F7B13EDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegisteCertificate", "Tools\RegisteCertificate\RegisteCertificate.csproj", "{8810C6B3-30CD-4115-8D8B-60ED59BC4692}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegisteCertificate", "Tools\RegisteCertificate\RegisteCertificate.csproj", "{8810C6B3-30CD-4115-8D8B-60ED59BC4692}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

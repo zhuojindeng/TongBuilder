@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using TongBuilder.RazorLib.Services;
 using TongBuilder.Application.DependencyInjection;
+using TongBuilder.Contract.Contracts;
+using TongBuilder.Application.Services;
 
 namespace TongBuilder.BlazorWeb.Client
 {
@@ -17,6 +19,7 @@ namespace TongBuilder.BlazorWeb.Client
                 logging.AddDebug();
             });
 
+            builder.Services.AddSingleton<IReadFile, ReadFile>();
             builder.Services.AddClientBusiness(builder.Configuration, builder.HostEnvironment.BaseAddress);
             builder.Services.AddCommonServices(builder.Configuration);
             var host = builder.Build();

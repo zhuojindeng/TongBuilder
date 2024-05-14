@@ -1,0 +1,142 @@
+﻿@page "/weather"
+@using TongBuilder.Contract.Contracts
+@using TongBuilder.Contract.Models
+@using TongBuilder.Contract.Core
+@attribute [Authorize]
+@inject IWeatherService ForecastService
+
+<PageTitle>Weather</PageTitle>
+<h1>Weather</h1>
+<p>This component demonstrates showing data.</p>
+
+@* 添加RangePicker和Button *@
+<div style="padding-bottom:10px;display:flex;justify-content:space-between;">
+    <div>
+        <RangePicker @bind-Value="dates" />
+        <Button Type="primary" OnClick="OnQuery">查询</Button>
+    </div>
+    <div style="text-align:right;">
+        @* 添加新增按钮 *@
+        <Button Type="primary" Icon="plus" OnClick="OnNew">新增</Button>
+    </div>
+</div>
+
+
+@* 修改Table属性，绑定分页参数和查询结果 *@
+<Table TItem="WeatherForecast"
+       DataSource="result?.PageData"
+       Total="result?.TotalCount??0"
+       @bind-PageIndex="criteria.PageIndex"
+       @bind-PageSize="criteria.PageSize"
+       OnChange="OnChange"
+       PaginationPosition="bottomRight">
+    @* 分页显示在右下角 *@
+    <ChildContent>
+        <PropertyColumn Property="c=>c.Date" />
+        <PropertyColumn Property="c=>c.TemperatureC">
+            <TitleTemplate>
+                <span><Icon Type="environment" />温度(C)</span>
+            </TitleTemplate>
+            <ChildContent>
+                @if (context.TemperatureC > 30)
+                {
+                    <Tag Color="volcano">@context.TemperatureC</Tag>
+                }
+                else
+                {
+                    @context.TemperatureC
+                }
+            </ChildContent>
+        </PropertyColumn>
+        <PropertyColumn Property="c=>c.TemperatureF" />
+        <PropertyColumn Property="c=>c.Summary" />
+        @* 添加操作列 *@
+        <ActionColumn Title="操作" Fixed="true" Width="120">
+            <div style="display:flex;">
+                <Tag Color="blue-inverse" OnClick="e=>OnEdit(context)">编辑</Tag>
+                <Tag Color="red-inverse" OnClick="e=>OnDelete(context)">删除</Tag>
+            </div>
+        </ActionColumn>
+    </ChildContent>
+    @* 添加分页模板 *@
+    <PaginationTemplate>
+        <Pagination Class="@context.PaginationClass"
+                    Total="context.Total" PageSize="context.PageSize" Current="context.PageIndex"
+                    ShowTotal="showTotal" ShowSizeChanger ShowQuickJumper
+                    OnChange="context.HandlePageChange" />
+    </PaginationTemplate>
+</Table>
+
+@* 添加Modal组件 *@
+<Modal Title="天气表单" @bind-Visible="@visible" OnOk="OnSave">
+    @* 将Modal内容换成WeatherForm组件 *@
+    <WeatherForm Model="model" />
+</Modal>
+
+
+@code {
+    private WeatherForecast[]? forecasts;
+    //添加显示总条数
+    private Func<PaginationTotalContext, string> showTotal = ctx => $"共 {ctx.Total} 条记录";
+    //定义日期范围查询条件变量
+    private DateTime?[]? dates;
+    //添加查询条件和查询结果对象
+    private PagingCriteria criteria = new();
+    private PagingResult<WeatherForecast> result;
+    //添加Modal显示变量
+    private bool visible;
+    //添加绑定表单的Model对象
+    private WeatherForecast model;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await ForecastService.GetWeather();
+        //默认查询范围改成10天
+        //添加默认查询条件，默认查询当天起10天内的天气
+        dates = new DateTime?[] { DateTime.Now, DateTime.Now.AddDays(10) };
+    }
+
+    //添加查询按钮方法
+    private void OnQuery()
+    {
+        //修改查询方法
+        criteria.Parameters["Date"] = dates;
+        result = ForecastService.QueryWeathers(criteria);
+    }
+
+    //添加表格分页参数改变事件
+    private void OnChange(AntDesign.TableModels.QueryModel<WeatherForecast> queryModel)
+    {
+        criteria.PageIndex = queryModel.PageIndex;
+        criteria.PageSize = queryModel.PageSize;
+        OnQuery();
+    }
+
+    //添加新增按钮方法
+    private void OnNew()
+    {
+        //修改新增方法，添加默认天气数据
+        model = new WeatherForecast { Date = DateOnly.FromDateTime(DateTime.Now) };
+        visible = true;
+    }
+
+    //添加编辑方法
+    private void OnEdit(WeatherForecast row)
+    {
+        model = row;
+        visible = true;
+    }
+    //添加删除方法
+    private void OnDelete(WeatherForecast row)
+    {
+        ForecastService.DeleteWeather(row);
+        OnQuery();
+    }
+
+    //添加Modal组件的OnOk事件保存数据
+    private void OnSave()
+    {
+        ForecastService.SaveWeather(model);
+        OnQuery();
+    }
+}

@@ -2,6 +2,8 @@
 {
     public interface IReadFile
     {
-        Task<string> ReadContent(string file);
+        Task<string> ReadContentAsync(string file);
+
+        Task<T> ReadContentAsync<T>(string file);
     }
 }

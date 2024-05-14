@@ -1,0 +1,16 @@
+﻿@using TongBuilder.Contract.Models
+<Form Model="Model" LabelColSpan="4">
+    <FormItem>
+        <DatePicker @bind-Value="@context.Date" />
+    </FormItem>
+    <FormItem>
+        <AntDesign.InputNumber @bind-Value="@context.TemperatureC" />
+    </FormItem>
+    <FormItem>
+        <TextArea @bind-Value="@context.Summary" />
+    </FormItem>
+</Form>
+
+@code {
+    [Parameter] public WeatherForecast Model { get; set; }
+}

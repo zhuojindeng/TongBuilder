@@ -5,6 +5,8 @@ using System.IO;
 using System.Windows;
 using TongBuilder.RazorLib.Services;
 using TongBuilder.Application.DependencyInjection;
+using TongBuilder.Contract.Contracts;
+using TongBuilder.Application.Services;
 
 namespace TongBuilder.BlazorWPF.Client
 {
@@ -103,6 +105,7 @@ namespace TongBuilder.BlazorWPF.Client
                 logging.AddDebug();
             });
 
+            services.AddSingleton<IReadFile, ReadFile>();
             services.AddClientBusiness(configuration);
             services.AddCommonServices(configuration);   
             services.AddTransient(typeof(MainWindow));

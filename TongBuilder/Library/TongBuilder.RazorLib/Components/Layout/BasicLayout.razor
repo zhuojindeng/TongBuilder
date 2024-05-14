@@ -1,21 +1,32 @@
 ﻿@using Microsoft.AspNetCore.Components.Authorization
 @using System.Net.Http.Json
+@using System.Reflection.Metadata
+@using TongBuilder.Contract.Contracts
+@using TongBuilder.Contract.Models
 @using TongBuilder.RazorLib.Components.GlobalHeader
+@using TongBuilder.RazorLib.Constant
 @inherits LayoutComponentBase
-
+<AuthorizeView>
+    <Authorized>
 <AntDesign.ProLayout.BasicLayout 
     Logo="@("https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg")"
     MenuData="_menuData">
     <RightContentRender>
         <RightContent />
     </RightContentRender>
-    <ChildContent>
-        @Body
+    <ChildContent>              
+      @Body    
     </ChildContent>
     <FooterRender>
         <FooterView Copyright="2024 Tong Builder" Links="Links"></FooterView>
     </FooterRender>
 </AntDesign.ProLayout.BasicLayout>
+    </Authorized>
+    <NotAuthorized>
+        @*Just render the body so that RedirectToLogin works*@
+        @Body
+    </NotAuthorized>
+</AuthorizeView>
 <SettingDrawer />
 
 @code 
@@ -23,13 +34,31 @@
     private MenuDataItem[] _menuData = { };
 
     [Inject] public HttpClient HttpClient { get; set; }
+    [Inject] public IReadFile ReadFile { get; set; }
+    // /// <summary>
+    // /// 系统配置服务
+    // /// </summary>
+    // [Inject]
+    // private ISystemConfigService systemConfigService { get; set; } = null!;
+
+    // private SystemConfig systemConfig = null!;
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
+
+        //systemConfig = systemConfigService.GetSystemConfig();
         try
-        {
-            _menuData = await HttpClient.GetFromJsonAsync<MenuDataItem[]>("_content/TongBuilder.RazorLib/data/menu.json");
+        {           
+            if (HttpClient.BaseAddress == null)
+            {
+                _menuData = await ReadFile.ReadContentAsync<MenuDataItem[]>("wwwroot/data/menu.json");
+            }
+            else
+            {
+                _menuData = await HttpClient.GetFromJsonAsync<MenuDataItem[]>("_content/TongBuilder.RazorLib/data/menu.json");
+            }
+            
         }
         catch (System.Exception ex)
         {

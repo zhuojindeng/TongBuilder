@@ -5,6 +5,8 @@ using TongBuilder.Application.Server.DependencyInjection;
 using NLog;
 using NLog.Web;
 using TongBuilder.Application.Server.Auth;
+using TongBuilder.Contract.Contracts;
+using TongBuilder.Application.Services;
 
 namespace TongBuilder.BlazorWeb
 {
@@ -26,6 +28,7 @@ namespace TongBuilder.BlazorWeb
                 builder.Logging.ClearProviders();
                 builder.Host.UseNLog();
 
+                builder.Services.AddSingleton<IReadFile, ReadFile>();
                 builder.Services.AddServerBusiness(builder.Configuration);
                 builder.Services.AddCommonServices(builder.Configuration);
 

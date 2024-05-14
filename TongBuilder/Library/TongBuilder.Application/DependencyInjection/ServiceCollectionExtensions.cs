@@ -8,6 +8,7 @@ using System.Net.Http.Headers;
 using TongBuilder.Application.Auth;
 using TongBuilder.Application.Business;
 using TongBuilder.Application.Identity;
+using TongBuilder.Application.Services;
 using TongBuilder.Contract.Contracts;
 using TongBuilder.Contract.Identity;
 
@@ -43,7 +44,8 @@ namespace TongBuilder.Application.DependencyInjection
             services.AddBlazoredLocalStorageAsSingleton();
             services.AddSingleton<IBizProvider, BizProvider>();
             services.AddSingleton<IWeatherService, WeatherService>();
-            services.AddSingleton<IAuthService, AuthService>();            
+            services.AddSingleton<IAuthService, AuthService>();
+            //services.AddSingleton<ISystemConfigService, SystemConfigService>();
             return services;
         }        
     }

@@ -5,6 +5,8 @@ using TongBuilder.Application.Server.DependencyInjection;
 using NLog;
 using NLog.Web;
 using TongBuilder.Application.Server.Auth;
+using TongBuilder.Contract.Contracts;
+using TongBuilder.Application.Services;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromFile("NLog.config").GetCurrentClassLogger();
 logger.Info("Starting up");
@@ -37,6 +39,8 @@ try
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();
     builder.Services.AddHttpContextAccessor();
+
+    builder.Services.AddSingleton<IReadFile, ReadFile>();
 
     logger.Info($"Registering ServiceBusiness");
     builder.Services.AddServerBusiness(builder.Configuration);

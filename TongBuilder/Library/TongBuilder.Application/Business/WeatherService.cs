@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using System.Net.Http.Json;
 using TongBuilder.Contract.Contracts;
+using TongBuilder.Contract.Core;
 using TongBuilder.Contract.Models;
 
 namespace TongBuilder.Application.Business
@@ -24,6 +25,11 @@ namespace TongBuilder.Application.Business
 
         }
 
+        public void DeleteWeather(WeatherForecast weather)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<WeatherForecast[]?> GetWeather()
         {
             try
@@ -39,5 +45,14 @@ namespace TongBuilder.Application.Business
 
         }
 
+        public PagingResult<WeatherForecast> QueryWeathers(PagingCriteria criteria)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveWeather(WeatherForecast weather)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -4,6 +4,8 @@ using Microsoft.Extensions.Logging;
 using TongBuilder.RazorLib.Services;
 using TongBuilder.Application.DependencyInjection;
 using System.Diagnostics;
+using TongBuilder.Contract.Contracts;
+using TongBuilder.Application.Services;
 
 
 namespace TongBuilder.BlazorWF.Client
@@ -109,6 +111,7 @@ namespace TongBuilder.BlazorWF.Client
                 logging.SetMinimumLevel(LogLevel.Trace);
                 logging.AddDebug();
             });
+            services.AddSingleton<IReadFile, ReadFile>();
             services.AddClientBusiness(configuration);
             services.AddCommonServices(configuration);
             

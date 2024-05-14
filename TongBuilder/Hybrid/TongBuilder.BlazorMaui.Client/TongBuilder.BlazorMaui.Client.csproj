@@ -59,11 +59,25 @@
 
     <ItemGroup>
       <Content Remove="nlog.config" />
+      <Content Remove="Resources\Raw\menu.json" />
       <Content Remove="wwwroot\appsettings.json" />
     </ItemGroup>
 
     <ItemGroup>
+      <MauiAsset Remove="Resources\Raw\menu.json" />
+      <MauiAsset Remove="Resources\Raw\wwwroot\data\activities.json" />
+      <MauiAsset Remove="Resources\Raw\wwwroot\data\advanced.json" />
+      <MauiAsset Remove="Resources\Raw\wwwroot\data\basic.json" />
+      <MauiAsset Remove="Resources\Raw\wwwroot\data\current_user.json" />
+      <MauiAsset Remove="Resources\Raw\wwwroot\data\fake_chart_data.json" />
+      <MauiAsset Remove="Resources\Raw\wwwroot\data\fake_list.json" />
+      <MauiAsset Remove="Resources\Raw\wwwroot\data\notice.json" />
+      <MauiAsset Remove="Resources\Raw\wwwroot\data\notices.json" />
+    </ItemGroup>
+
+    <ItemGroup>
       <EmbeddedResource Include="nlog.config" />
+      <EmbeddedResource Include="Resources\Raw\wwwroot\data\menu.json" />
       <EmbeddedResource Include="wwwroot\appsettings.json">
         <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       </EmbeddedResource>
