@@ -82,3 +82,34 @@ a, .btn-link {
 		padding-left: env(safe-area-inset-left);
 	}
 }
+
+.dark,
+.dark .ant-picker,
+.dark .ant-table-thead > tr > th,
+.dark .ant-table-tbody > tr > td,
+.dark .ant-pagination-item,
+.dark .ant-pagination-options-quick-jumper input,
+.dark .ant-pagination-prev .ant-pagination-item-link,
+.dark .ant-pagination-next .ant-pagination-item-link,
+.dark .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    background-color: #202020;
+    color: #d8d8d8;
+}
+
+    .dark .ant-picker,
+    .dark .ant-table-thead > tr > th,
+    .dark .ant-table-tbody > tr > td {
+        border-color: rgba(253, 253, 253, 0.12);
+    }
+
+    .dark h1,
+    .dark .ant-select-arrow,
+    .dark .ant-picker-input > input,
+    .dark .ant-picker-separator,
+    .dark .ant-picker-suffix,
+    .dark .ant-picker-clear,
+    .dark .ant-pagination,
+    .dark .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-ellipsis,
+    .dark .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-ellipsis {
+        color: #d8d8d8;
+    }

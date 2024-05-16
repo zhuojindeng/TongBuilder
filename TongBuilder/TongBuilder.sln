@@ -67,6 +67,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{1C4FEB24
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegisteCertificate", "Tools\RegisteCertificate\RegisteCertificate.csproj", "{8810C6B3-30CD-4115-8D8B-60ED59BC4692}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TongBuilder", "Library\TongBuilder\TongBuilder.csproj", "{06FA0D68-2C12-4C5D-9753-632F4FCEE176}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -161,6 +163,10 @@ Global
 		{8810C6B3-30CD-4115-8D8B-60ED59BC4692}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8810C6B3-30CD-4115-8D8B-60ED59BC4692}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8810C6B3-30CD-4115-8D8B-60ED59BC4692}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06FA0D68-2C12-4C5D-9753-632F4FCEE176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06FA0D68-2C12-4C5D-9753-632F4FCEE176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06FA0D68-2C12-4C5D-9753-632F4FCEE176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06FA0D68-2C12-4C5D-9753-632F4FCEE176}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -191,6 +197,7 @@ Global
 		{EBB23922-1A5F-4520-860D-48E1F8CA7FE6} = {29CA3CDB-AA3F-47A5-8425-F6A721638B9E}
 		{A2C65576-B588-4D33-908B-0906B9821700} = {B24B9CD7-82B9-4D37-A9E7-4F2854089FCF}
 		{8810C6B3-30CD-4115-8D8B-60ED59BC4692} = {1C4FEB24-0B81-40B3-86DF-FC09F7B13EDC}
+		{06FA0D68-2C12-4C5D-9753-632F4FCEE176} = {B24B9CD7-82B9-4D37-A9E7-4F2854089FCF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2CC51251-957C-4429-BD62-5A31CDA46DFD}

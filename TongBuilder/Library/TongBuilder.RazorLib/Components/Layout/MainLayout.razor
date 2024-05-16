@@ -1,11 +1,14 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
+<AuthorizeView>
+    <Authorized>
+<div class="page @theme">
     <div class="sidebar">       
          <NavMenu /> 
     </div>
     <main>
         <div class="top-row px-4">
+            <Switch CheckedChildren="🌜" UnCheckedChildren="🌞" Value="isDark" OnChange="ThemeChanged" />
             <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
         </div>
 
@@ -14,3 +17,20 @@
         </article>
     </main>
 </div>
+    </Authorized>
+    <NotAuthorized>
+        @*Just render the body so that RedirectToLogin works*@
+        @Body
+    </NotAuthorized>
+</AuthorizeView>
+@code
+{
+    private string theme = "light";
+    private bool isDark;
+
+    private void ThemeChanged(bool dark)
+    {
+        isDark = dark;
+        theme = dark ? "dark" : "light";
+    }
+}

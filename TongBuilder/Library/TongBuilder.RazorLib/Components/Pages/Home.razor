@@ -1,11 +1,20 @@
 ﻿@page "/"
+@using System.Diagnostics
 @using TongBuilder.Contract.Contracts
+@using static TongBuilder.RazorLib.Components.TongDialog
 @attribute [Authorize]
 @inject ICurrentUser CurrentUser
 
 <AuthorizeView>
     <Authorized>
         <p>Hello, @context.User.Identity?.Name!,@context.User.IsInRole("Admin")</p>
+        <PageTitle>Basic Dialog</PageTitle>
+
+        <TongDialog Title="Are you sure?" Buttons="@Buttons">
+            <Body>
+                Do you really want to delete this user?
+            </Body>
+        </TongDialog>
     </Authorized>
     <Authorizing>
         <p>You can only see this content while authentication is in progress.</p>
@@ -22,4 +31,15 @@
 
 <p>Welcome to @CurrentUser.NickName new app.</p>
 
-
+@code {
+    public IEnumerable<DialogButton> Buttons { get; set; } = new List<DialogButton>{
+        new DialogButton("Delete", () =>
+        {
+            Debug.WriteLine("Delete");
+        }),
+        new DialogButton("Cancel", () =>
+        {
+            Debug.WriteLine("Cancel");
+        })
+    };
+}
