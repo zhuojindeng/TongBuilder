@@ -67,7 +67,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{1C4FEB24
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegisteCertificate", "Tools\RegisteCertificate\RegisteCertificate.csproj", "{8810C6B3-30CD-4115-8D8B-60ED59BC4692}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TongBuilder", "Library\TongBuilder\TongBuilder.csproj", "{06FA0D68-2C12-4C5D-9753-632F4FCEE176}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TongBuilder", "Library\TongBuilder\TongBuilder.csproj", "{06FA0D68-2C12-4C5D-9753-632F4FCEE176}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

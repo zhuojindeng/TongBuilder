@@ -1,0 +1,46 @@
+﻿@page "/DynamicForm"
+
+<h3>DynamicForm</h3>
+
+<EditForm Model="@DataContext">
+    @foreach (var field in FieldIdentifiers)
+    {
+        if (field.Value == "string")
+        {
+            @field.Key
+            @CreateComponent(field.Key)
+            ;
+            <br />
+        }
+    }
+
+    <h3>Statically declared</h3>
+    <InputText @bind-Value="@DataContext.Name"></InputText> <br>
+    Name: @DataContext.Name
+</EditForm>
+
+@code {
+    [Parameter] public DataX DataContext { get; set; } = new DataX();
+    [Parameter] public Dictionary<string, string> FieldIdentifiers { get; set; } = new Dictionary<string, string> { { "Name", "string" }, { "Phone", "string" } };
+
+    public RenderFragment CreateComponent(string fld) => builder =>
+    {
+        builder.OpenComponent(0, typeof(InputText));
+
+        // Get the initial property value
+        var propInfoValue = typeof(DataX).GetProperty(fld);
+        var s = propInfoValue.GetValue(DataContext);
+        builder.AddAttribute(1, "Value", s);
+
+        // Create the handler for ValueChanged. I use reflection to the value.
+        builder.AddAttribute(3, "ValueChanged", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, Microsoft.AspNetCore.Components.EventCallback.Factory.CreateInferred(this, __value => propInfoValue.SetValue(DataContext, __value), (string)propInfoValue.GetValue(DataContext)))));
+
+        // Create an expression to set the ValueExpression-attribute.
+        var constant = System.Linq.Expressions.Expression.Constant(DataContext, typeof(DataX));
+        var exp = System.Linq.Expressions.MemberExpression.Property(constant, fld);
+        var lamb = System.Linq.Expressions.Expression.Lambda<Func<string>>(exp);
+        builder.AddAttribute(4, "ValueExpression", lamb);
+
+        builder.CloseComponent();
+    };
+}
