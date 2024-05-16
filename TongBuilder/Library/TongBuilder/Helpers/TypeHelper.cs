@@ -4,6 +4,9 @@ using System.Reflection.Emit;
 
 namespace TongBuilder.Helpers;
 
+/// <summary>
+///  from known:https://github.com/known/Known
+/// </summary>
 public sealed class TypeHelper
 {
     private TypeHelper() { }

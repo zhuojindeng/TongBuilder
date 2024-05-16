@@ -2,6 +2,9 @@
 
 namespace TongBuilder.Extensions;
 
+/// <summary>
+///  from known:https://github.com/known/Known
+/// </summary>
 public static class ComponentExtension
 {
     public static void Cascading<T>(this RenderTreeBuilder builder, T value, RenderFragment child)

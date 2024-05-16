@@ -3,6 +3,10 @@ using TongBuilder.Helpers;
 
 namespace TongBuilder.Blazor
 {
+    /// <summary>
+    /// from known:https://github.com/known/Known
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class ComponentBuilder<T> where T : Microsoft.AspNetCore.Components.IComponent
     {
         //手动构建呈现器

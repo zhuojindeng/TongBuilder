@@ -1,5 +1,8 @@
 ﻿namespace TongBuilder.Extensions;
 
+/// <summary>
+///  from known:https://github.com/known/Known
+/// </summary>
 public static class HtmlExtension
 {
     public static void Label(this RenderTreeBuilder builder, string text) => builder.Label(() => builder.Markup(text));
