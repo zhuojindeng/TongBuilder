@@ -1,0 +1,37 @@
+﻿.main-page-container {   
+   
+}
+.main-page-container-open {
+    height: calc(100% - 198px);
+}
+.page-body {    
+    gap: 16px;
+    height: calc(100% - 156px);
+    width: 100%;
+    background: white;
+    border-radius: 0;   
+}
+.page-body-left {
+    border-radius: 16px;
+    height: 100%;
+    width: calc(100% - 304px);
+    background: white;
+    padding: 16px;
+}
+
+.page-body-right {
+    width: 304px;
+    border-radius: 16px;
+    height: 100%;
+    background: blue;   
+}
+
+.page-bottom {
+    height: 156px;
+    background: yellow;
+    overflow-y: hidden;
+}
+
+.page-bottom-open {
+    height: 354px;
+}

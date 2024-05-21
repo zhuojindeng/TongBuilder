@@ -23,6 +23,7 @@ namespace TongBuilder.Application.Business
             var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
             forecasts = Enumerable.Range(1, 10).Select(index => new WeatherForecast
             {
+                Id = index,
                 Date = startDate.AddDays(index),
                 TemperatureC = Random.Shared.Next(-20, 55),
                 Summary = summaries[Random.Shared.Next(summaries.Length)]
@@ -64,12 +65,12 @@ namespace TongBuilder.Application.Business
             //    _logger.LogError("GetWeather: {Error}", ex);
             //    return null;
             //}
-            await Task.Delay(500);
-
+            //await Task.Delay(500);           
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
+                Id = index,
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
+                TemperatureC = Random.Shared.Next(-20, 55),               
                 Summary = summaries[Random.Shared.Next(summaries.Length)]
             })
             .ToArray();

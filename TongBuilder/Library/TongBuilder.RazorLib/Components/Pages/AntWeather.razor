@@ -29,11 +29,15 @@
        @bind-PageIndex="criteria.PageIndex"
        @bind-PageSize="criteria.PageSize"
        OnChange="OnChange"
+       Size="TableSize.Small"
+       RowKey="x=>x.Id"
        PaginationPosition="bottomRight">
     @* 分页显示在右下角 *@
     <ChildContent>
-        <PropertyColumn Property="c=>c.Date" />
-        <PropertyColumn Property="c=>c.TemperatureC">
+        <Selection Key="@(context.Id.ToString())" />
+        <PropertyColumn Property="c=>c.Id" Sortable />
+        <PropertyColumn Property="c=>c.Date" Sortable />
+        <PropertyColumn Property="c=>c.TemperatureC" Sortable>
             <TitleTemplate>
                 <span><Icon Type="environment" />温度(C)</span>
             </TitleTemplate>
@@ -48,7 +52,10 @@
                 }
             </ChildContent>
         </PropertyColumn>
-        <PropertyColumn Property="c=>c.TemperatureF" />
+        <PropertyColumn Property="c=>c.TemperatureF" Sortable />
+        <PropertyColumn Title="Hot" Property="c=>c.Hot">
+            <Switch Value="@context.Hot"></Switch>
+        </PropertyColumn>
         <PropertyColumn Property="c=>c.Summary" />
         @* 添加操作列 *@
         <ActionColumn Title="操作" Fixed="true" Width="120">

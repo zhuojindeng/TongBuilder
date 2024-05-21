@@ -15,6 +15,20 @@
                 Do you really want to delete this user?
             </Body>
         </TongDialog>
+        <JobsContainer Jobs="Jobs" OnStatusUpdated="HandleStatusUpdated">
+            <JobList ListStatus="JobStatuses.Todo" AllowedStatuses="@(new JobStatuses[] { JobStatuses.Started})" />
+            <JobList ListStatus="JobStatuses.Started" AllowedStatuses="@(new JobStatuses[] { JobStatuses.Todo})" />
+            <JobList ListStatus="JobStatuses.Completed" AllowedStatuses="@(new JobStatuses[] { JobStatuses.Started })" />
+        </JobsContainer>
+
+        <hr />
+        <p>Last updated job was: <strong>@lastUpdatedJob</strong></p>
+        <hr />
+
+        @foreach (var task in Jobs)
+        {
+            <p>@task.Description - <strong>@task.Status</strong></p>
+        }
     </Authorized>
     <Authorizing>
         <p>You can only see this content while authentication is in progress.</p>
@@ -42,4 +56,20 @@
             Debug.WriteLine("Cancel");
         })
     };
+    List<JobModel> Jobs = new List<JobModel>();
+    string lastUpdatedJob = "";
+
+    protected override void OnInitialized()
+    {
+        Jobs.Add(new JobModel { Id = 1, Description = "Mow the lawn", Status = JobStatuses.Todo, LastUpdated = DateTime.Now });
+        Jobs.Add(new JobModel { Id = 2, Description = "Go to the gym", Status = JobStatuses.Todo, LastUpdated = DateTime.Now });
+        Jobs.Add(new JobModel { Id = 3, Description = "Call Ollie", Status = JobStatuses.Todo, LastUpdated = DateTime.Now });
+        Jobs.Add(new JobModel { Id = 4, Description = "Fix bike tyre", Status = JobStatuses.Todo, LastUpdated = DateTime.Now });
+        Jobs.Add(new JobModel { Id = 5, Description = "Finish blog post", Status = JobStatuses.Todo, LastUpdated = DateTime.Now });
+    }
+
+    void HandleStatusUpdated(JobModel updatedJob)
+    {
+        lastUpdatedJob = updatedJob.Description;
+    }
 }

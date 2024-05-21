@@ -18,8 +18,11 @@ namespace TongBuilder.Application.Server.Business
         {
             var startDate = DateOnly.FromDateTime(DateTime.Now);
             var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
+            var rng = new Random();
+            var temperatureC = rng.Next(-20, 55);
             forecasts = Enumerable.Range(1, 10).Select(index => new WeatherForecast
             {
+                Id = index,
                 Date = startDate.AddDays(index),
                 TemperatureC = Random.Shared.Next(-20, 55),
                 Summary = summaries[Random.Shared.Next(summaries.Length)]
@@ -29,10 +32,11 @@ namespace TongBuilder.Application.Server.Business
 
         public async Task<WeatherForecast[]?> GetWeather()
         {
-            await Task.Delay(500);
+            //await Task.Delay(500);
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
+                Id = index,
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
                 TemperatureC = Random.Shared.Next(-20, 55),
                 Summary = summaries[Random.Shared.Next(summaries.Length)]

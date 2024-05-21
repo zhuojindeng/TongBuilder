@@ -4,6 +4,9 @@
 @attribute [Authorize]
 @inject IWeatherService ForecastService
 
+@inject PersistentComponentState ApplicationState
+@implements IDisposable
+
 <PageTitle>Weather forecast</PageTitle>
 
 <h1>Weather</h1>
@@ -41,9 +44,24 @@ else
 
 @code {
     private WeatherForecast[]? forecasts;
-
+    private PersistingComponentStateSubscription _subscription;
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await ForecastService.GetWeather();
+        _subscription = ApplicationState.RegisterOnPersisting(Persist);
+
+        var foundInState = ApplicationState.TryTakeFromJson<WeatherForecast[]>("weather", out var curforecasts);
+
+        forecasts = foundInState ? curforecasts : await ForecastService.GetWeather();
+    }
+
+    private Task Persist()
+    {
+        ApplicationState.PersistAsJson("weather", forecasts);
+        return Task.CompletedTask;
+    }
+
+    public void Dispose()
+    {
+        _subscription.Dispose();
     }
 }
