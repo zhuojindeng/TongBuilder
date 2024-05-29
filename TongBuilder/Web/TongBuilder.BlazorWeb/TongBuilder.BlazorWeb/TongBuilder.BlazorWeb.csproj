@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Library\TongBuilder.Application.Server\TongBuilder.Application.Server.csproj" />
     <ProjectReference Include="..\..\..\Library\TongBuilder.Application\TongBuilder.Application.csproj" />
+    <ProjectReference Include="..\..\..\TongBuilder.ServiceDefaults\TongBuilder.ServiceDefaults.csproj" />
     <ProjectReference Include="..\TongBuilder.BlazorWeb.Client\TongBuilder.BlazorWeb.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.4" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.11" />

@@ -69,6 +69,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegisteCertificate", "Tools
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TongBuilder", "Library\TongBuilder\TongBuilder.csproj", "{06FA0D68-2C12-4C5D-9753-632F4FCEE176}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TongBuilder.AppHost", "TongBuilder.AppHost\TongBuilder.AppHost.csproj", "{FDA4F63E-8DC6-4825-89EB-52E86B0C425E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TongBuilder.ServiceDefaults", "TongBuilder.ServiceDefaults\TongBuilder.ServiceDefaults.csproj", "{8F2E774B-EECF-47EE-A693-87D83C58B3B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -167,6 +171,14 @@ Global
 		{06FA0D68-2C12-4C5D-9753-632F4FCEE176}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06FA0D68-2C12-4C5D-9753-632F4FCEE176}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06FA0D68-2C12-4C5D-9753-632F4FCEE176}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDA4F63E-8DC6-4825-89EB-52E86B0C425E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDA4F63E-8DC6-4825-89EB-52E86B0C425E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDA4F63E-8DC6-4825-89EB-52E86B0C425E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDA4F63E-8DC6-4825-89EB-52E86B0C425E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F2E774B-EECF-47EE-A693-87D83C58B3B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F2E774B-EECF-47EE-A693-87D83C58B3B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F2E774B-EECF-47EE-A693-87D83C58B3B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F2E774B-EECF-47EE-A693-87D83C58B3B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

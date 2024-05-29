@@ -19,6 +19,7 @@ namespace TongBuilder.BlazorWeb
             try
             {
                 var builder = WebApplication.CreateBuilder(args);
+                builder.AddServiceDefaults();
 
                 // Add services to the container.
                 builder.Services.AddRazorComponents()
@@ -32,7 +33,7 @@ namespace TongBuilder.BlazorWeb
                 builder.Services.AddServerBusiness(builder.Configuration);
                 builder.Services.AddCommonServices(builder.Configuration);
 
-                builder.Services.AddAuthorization();//»ùÓÚ½ÇÉ«µÄÊÚÈ¨ºÍ»ùÓÚSchemeµÄÊÚÈ¨£¬Ö»ÊÇÒ»ÖÖÓï·¨ÉÏµÄ±ã½İ£¬×îÖÕ¶¼»áÉú³ÉÊÚÈ¨²ßÂÔ
+                builder.Services.AddAuthorization();//åŸºäºè§’è‰²çš„æˆæƒå’ŒåŸºäºSchemeçš„æˆæƒï¼Œåªæ˜¯ä¸€ç§è¯­æ³•ä¸Šçš„ä¾¿æ·ï¼Œæœ€ç»ˆéƒ½ä¼šç”Ÿæˆæˆæƒç­–ç•¥
                 builder.Services.AddJwtAuthentication(builder.Configuration.GetSection("JwtSettings"));
 
                 builder.Services.AddScoped<IWeatherForecastService, TongBuilder.BlazorWeb.Services.WeatherForecastService>();
@@ -40,6 +41,8 @@ namespace TongBuilder.BlazorWeb
                 builder.Services.AddHttpContextAccessor();
 
                 var app = builder.Build();
+
+                app.MapDefaultEndpoints();
 
                 // Configure the HTTP request pipeline.
                 if (app.Environment.IsDevelopment())
