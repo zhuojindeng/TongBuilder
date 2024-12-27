@@ -1,0 +1,6 @@
+@TongBuilder.AI_HostAddress = http://localhost:5014
+
+GET {{TongBuilder.AI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -10,12 +10,13 @@
   <ItemGroup>
     <PackageReference Include="AspectCore.Extensions.DependencyInjection" Version="2.4.0" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.11" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Library\TongBuilder.Application.Server\TongBuilder.Application.Server.csproj" />
     <ProjectReference Include="..\..\..\Library\TongBuilder.Contract\TongBuilder.Contract.csproj" />
+    <ProjectReference Include="..\..\..\TongBuilder.ServiceDefaults\TongBuilder.ServiceDefaults.csproj" />
   </ItemGroup>
 
 </Project>

@@ -14,6 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Service\AI\TongBuilder.AI\TongBuilder.AI.csproj" />
+    <ProjectReference Include="..\Service\TestModule\TongBuilder.Test.WebApi\TongBuilder.Test.WebApi.csproj" />
     <ProjectReference Include="..\Web\TongBuilder.BlazorWeb\TongBuilder.BlazorWeb\TongBuilder.BlazorWeb.csproj" />
   </ItemGroup>
 

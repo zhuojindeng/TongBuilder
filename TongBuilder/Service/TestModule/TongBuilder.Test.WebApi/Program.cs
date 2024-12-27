@@ -15,6 +15,7 @@ namespace TongBuilder.Test.WebApi
             try
             {
                 var builder = WebApplication.CreateBuilder(args);
+                builder.AddServiceDefaults();
 
                 // Add services to the container.
                 builder.Logging.ClearProviders();
@@ -37,6 +38,8 @@ namespace TongBuilder.Test.WebApi
                 builder.Services.AddSwaggerGen();
 
                 var app = builder.Build();
+
+                app.MapDefaultEndpoints();
 
                 // Configure the HTTP request pipeline.
                 if (app.Environment.IsDevelopment())
