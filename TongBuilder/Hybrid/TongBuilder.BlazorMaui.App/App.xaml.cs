@@ -1,12 +1,15 @@
 ﻿namespace TongBuilder.BlazorMaui.App
 {
-    public partial class App : Application
+    public partial class App : Microsoft.Maui.Controls.Application
     {
         public App()
         {
             InitializeComponent();
+        }
 
-            MainPage = new MainPage();
+        protected override Window CreateWindow(IActivationState? activationState)
+        {
+            return new Window(new MainPage()) { Title = "TongBuilder.BlazorMaui.App" };
         }
     }
 }

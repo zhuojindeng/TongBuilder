@@ -43,18 +43,18 @@ namespace TongBuilder.SSOServer.DependencyInjection
                         // Enable the authorization and token endpoints.
                         options.SetAuthorizationEndpointUris("connect/authorize")
                                .SetTokenEndpointUris("connect/token")
-                               .SetDeviceEndpointUris("/connect/device")
+                               .SetDeviceAuthorizationEndpointUris("/connect/device")
                                .SetIntrospectionEndpointUris("/connect/introspect")
                                //.SetRevocationEndpointUris("/connect/revocat")
-                               .SetUserinfoEndpointUris("/connect/userinfo")
-                               .SetVerificationEndpointUris("/connect/verify")
-                               .SetLogoutEndpointUris("/connect/logout");
+                               .SetUserInfoEndpointUris("/connect/userinfo")
+                               .SetEndUserVerificationEndpointUris("/connect/verify")
+                               .SetEndSessionEndpointUris("/connect/logout");
 
                         // Enable the authorization code flow.
                         options.AllowAuthorizationCodeFlow()
                                  //.RequireProofKeyForCodeExchange()//this makes sure all clients are required to use PKCE (Proof Key for Code Exchange).
                                  .AllowClientCredentialsFlow()
-                                 .AllowDeviceCodeFlow()
+                                 .AllowDeviceAuthorizationFlow()
                                  .AllowHybridFlow()
                                  .AllowImplicitFlow()
                                  .AllowPasswordFlow()
@@ -73,10 +73,10 @@ namespace TongBuilder.SSOServer.DependencyInjection
                                   // Register the ASP.NET Core host and configure the ASP.NET Core-specific options.
                                   .UseAspNetCore().EnableStatusCodePagesIntegration()
                                                    .EnableAuthorizationEndpointPassthrough()
-                                                   .EnableLogoutEndpointPassthrough()
+                                                   .EnableEndSessionEndpointPassthrough()
                                                    .EnableTokenEndpointPassthrough()
-                                                   .EnableUserinfoEndpointPassthrough()
-                                                   .EnableVerificationEndpointPassthrough()
+                                                   .EnableUserInfoEndpointPassthrough()
+                                                   .EnableEndUserVerificationEndpointPassthrough()
                                                    .DisableTransportSecurityRequirement(); // 禁用HTTPS 在开发测试环境;
 
                         // Register the signing and encryption credentials.发布正式版本需要替换

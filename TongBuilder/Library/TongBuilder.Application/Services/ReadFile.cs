@@ -4,6 +4,9 @@ using TongBuilder.Contract.Contracts;
 
 namespace TongBuilder.Application.Services
 {
+    /// <summary>
+    /// WPF 和 Windows 窗体读取文件
+    /// </summary>
     public class ReadFile : IReadFile
     {
         public async Task<string> ReadContentAsync(string file)

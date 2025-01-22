@@ -4,6 +4,8 @@ using TongBuilder.RazorLib;
 using TongBuilder.RazorLib.Services;
 using TongBuilder.Application.DependencyInjection;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+using TongBuilder.Contract.Contracts;
+using TongBuilder.Application.Services;
 
 namespace TongBuilder.Wasm
 {
@@ -39,7 +41,7 @@ namespace TongBuilder.Wasm
                 logging.SetMinimumLevel(LogLevel.Trace);
                 logging.AddDebug();
             });
-
+            builder.Services.AddSingleton<IReadFile, ReadFile>();
             builder.Services.AddClientBusiness(builder.Configuration, builder.HostEnvironment.BaseAddress);//
             builder.Services.AddCommonServices(builder.Configuration);
 

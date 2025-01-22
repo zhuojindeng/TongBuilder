@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Microsoft.AspNetCore.Components.WebView;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,15 @@ namespace TongBuilder.BlazorWPF.Client
         public MainWindow()
         {
             InitializeComponent();
+            //blazorWebView.StartPath = "/welcome";
+        }
+
+        private void Handle_UrlLoading(object sender, UrlLoadingEventArgs urlLoadingEventArgs)
+        {
+            if (urlLoadingEventArgs.Url.Host != "0.0.0.0")
+            {
+                urlLoadingEventArgs.UrlLoadingStrategy = UrlLoadingStrategy.OpenInWebView;
+            }
         }
     }
 }

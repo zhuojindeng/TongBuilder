@@ -9,31 +9,31 @@
         <Tabs ActiveKey="@context.LoginMode">
                 <TabPane Key="1" Tab="账号登录">
                     <FormItem>
-                        <AntDesign.Input Placeholder="请输入账号" Size="large" @bind-Value="@context.UserName">
+                        <AntDesign.Input Placeholder="请输入账号" Size="@InputSize.Large" @bind-Value="@context.UserName">
                             <Prefix><Icon Type="user" /></Prefix>
                         </AntDesign.Input>
                     </FormItem>
                     <FormItem>
-                        <AntDesign.Input Placeholder="请输入密码" Size="large" @bind-Value="@context.Password" Type="password">
+                        <AntDesign.Input Placeholder="请输入密码" Size="@InputSize.Large" @bind-Value="@context.Password" Type="@InputType.Password">
                             <Prefix><Icon Type="lock" /></Prefix>
                         </AntDesign.Input>
                     </FormItem>
                 </TabPane>
                 <TabPane Key="2" Tab="手机登录">
                     <FormItem>
-                        <AntDesign.Input Placeholder="手机号" Size="large" @bind-Value="@context.PhoneNumber">
+                        <AntDesign.Input Placeholder="手机号" Size="@InputSize.Large" @bind-Value="@context.PhoneNumber">
                             <Prefix><Icon Type="mobile" /></Prefix>
                         </AntDesign.Input>
                     </FormItem>
                     <FormItem>
                         <Row Gutter="8">
                             <AntDesign.Col Span="16">
-                                <AntDesign.Input Placeholder="验证码" Size="large" @bind-Value="@context.VerificationCode">
+                                <AntDesign.Input Placeholder="验证码" Size="@InputSize.Large" @bind-Value="@context.VerificationCode">
                                     <Prefix><Icon Type="mail" /></Prefix>
                                 </AntDesign.Input>
                             </AntDesign.Col>
                             <AntDesign.Col Span="8">
-                                <Button Size="large" Block OnClick="GetCaptcha">验证</Button>
+                                <Button Size="@ButtonSize.Large" Block OnClick="GetCaptcha">验证</Button>
                             </AntDesign.Col>
                         </Row>
                     </FormItem>
@@ -47,7 +47,7 @@
                     忘记口令
                 </a>
             </div>
-            <Button Type="primary" HtmlType="submit" Class="submit" Size="large" Block>登录</Button>
+            <Button Type="@ButtonType.Primary" HtmlType="submit" Class="submit" Size="@ButtonSize.Large" Block>登录</Button>
             <div class="other">
                 其它登录
                 <Icon Class="icon" Type="alipay-circle" />

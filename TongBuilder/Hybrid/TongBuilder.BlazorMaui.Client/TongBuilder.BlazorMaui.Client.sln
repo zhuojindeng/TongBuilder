@@ -1,0 +1,39 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TongBuilder.BlazorMaui.Client", "TongBuilder.BlazorMaui.Client\TongBuilder.BlazorMaui.Client.csproj", "{ED30A9A5-524C-4CDB-862B-3EEB7562457B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TongBuilder.BlazorMaui.Client.Shared", "TongBuilder.BlazorMaui.Client.Shared\TongBuilder.BlazorMaui.Client.Shared.csproj", "{2C4FFE72-B51A-49EF-8914-6AC1E9651369}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TongBuilder.BlazorMaui.Client.Web", "TongBuilder.BlazorMaui.Client.Web\TongBuilder.BlazorMaui.Client.Web.csproj", "{053C9F11-055C-4D12-8CC4-A69AB85BE260}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TongBuilder.BlazorMaui.Client.Web.Client", "TongBuilder.BlazorMaui.Client.Web.Client\TongBuilder.BlazorMaui.Client.Web.Client.csproj", "{4CFDFA0C-8FD0-472C-9A88-BC790E8C613A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED30A9A5-524C-4CDB-862B-3EEB7562457B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED30A9A5-524C-4CDB-862B-3EEB7562457B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED30A9A5-524C-4CDB-862B-3EEB7562457B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED30A9A5-524C-4CDB-862B-3EEB7562457B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C4FFE72-B51A-49EF-8914-6AC1E9651369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C4FFE72-B51A-49EF-8914-6AC1E9651369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C4FFE72-B51A-49EF-8914-6AC1E9651369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C4FFE72-B51A-49EF-8914-6AC1E9651369}.Release|Any CPU.Build.0 = Release|Any CPU
+		{053C9F11-055C-4D12-8CC4-A69AB85BE260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{053C9F11-055C-4D12-8CC4-A69AB85BE260}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{053C9F11-055C-4D12-8CC4-A69AB85BE260}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{053C9F11-055C-4D12-8CC4-A69AB85BE260}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CFDFA0C-8FD0-472C-9A88-BC790E8C613A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CFDFA0C-8FD0-472C-9A88-BC790E8C613A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CFDFA0C-8FD0-472C-9A88-BC790E8C613A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CFDFA0C-8FD0-472C-9A88-BC790E8C613A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

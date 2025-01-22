@@ -11,7 +11,6 @@ using OpenIddict.Server.AspNetCore;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using TongBuilder.Infrastructure;
-using Amazon.Auth.AccessControlPolicy;
 using System.Globalization;
 using Microsoft.Extensions.Options;
 using TongBuilder.SSOServer.Options;
@@ -100,11 +99,11 @@ namespace TongBuilder.SSOServer.Controllers
 
             // If prompt=login was specified by the client application,
             // immediately return the user agent to the login page.
-            if (request.HasPrompt(Prompts.Login))
+            if (request.HasPromptValue("Prompts.Login"))
             {
                 // To avoid endless login -> authorization redirects, the prompt=login flag
                 // is removed from the authorization request payload before redirecting the user.
-                var prompt = string.Join(" ", request.GetPrompts().Remove(Prompts.Login));
+                var prompt = string.Join(" ", request.GetPromptValues().Remove("Prompts.Login"));
                 var parameters = Request.HasFormContentType ?
                     Request.Form.Where(parameter => parameter.Key != Parameters.Prompt).ToList() :
                     Request.Query.Where(parameter => parameter.Key != Parameters.Prompt).ToList();
@@ -174,7 +173,7 @@ namespace TongBuilder.SSOServer.Controllers
                 // return an authorization response without displaying the consent form.
                 case ConsentTypes.Implicit:
                 case ConsentTypes.External when authorizations.Any():
-                case ConsentTypes.Explicit when authorizations.Any() && !request.HasPrompt(Prompts.Consent):
+                case ConsentTypes.Explicit when authorizations.Any() && !request.HasPromptValue("Prompts.Consent"):
 
                     ClaimsPrincipal principal = CreateUserPrincpal(resultdata, TokenValidationParameters.DefaultAuthenticationType);
                     // Note: the granted scopes match the requested scope
@@ -215,8 +214,8 @@ namespace TongBuilder.SSOServer.Controllers
 
                 // At this point, no authorization was found in the database and an error must be returned
                 // if the client application specified prompt=none in the authorization request.
-                case ConsentTypes.Explicit when request.HasPrompt(Prompts.None):
-                case ConsentTypes.Systematic when request.HasPrompt(Prompts.None):
+                case ConsentTypes.Explicit when request.HasPromptValue("Prompts.None"):
+                case ConsentTypes.Systematic when request.HasPromptValue("Prompts.None"):
                     return Forbid(
                         authenticationSchemes: OpenIddictServerAspNetCoreDefaults.AuthenticationScheme,
                         properties: new AuthenticationProperties(new Dictionary<string, string?>

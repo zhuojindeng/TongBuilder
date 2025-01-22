@@ -116,12 +116,12 @@ namespace TongBuilder.RazorLib.Services.Settings
                 switch (LeftMenuTheme)
                 {
                     case LeftMenuThemeEnum.Light:
-                        SiderTheme.Light.Value = 1;
-                        SiderTheme.Light.Name = "Light".ToLowerInvariant();
+                        //SiderTheme.Light.Value = 1;
+                        //SiderTheme.Light.Name = "Light".ToLowerInvariant();
                         return SiderTheme.Light;
                     case LeftMenuThemeEnum.Dark:
-                        SiderTheme.Dark.Value = 2;
-                        SiderTheme.Dark.Name = "Dark".ToLowerInvariant();
+                        //SiderTheme.Dark.Value = 2;
+                        //SiderTheme.Dark.Name = "Dark".ToLowerInvariant();
                         return SiderTheme.Dark;
                     default:
                         return SiderTheme.Dark;
@@ -136,12 +136,12 @@ namespace TongBuilder.RazorLib.Services.Settings
                 switch (LeftMenuTheme)
                 {
                     case LeftMenuThemeEnum.Light:
-                        MenuTheme.Light.Value = 1;
-                        MenuTheme.Light.Name = "Light".ToLowerInvariant();
+                        //MenuTheme.Light.Value = 1;
+                        //MenuTheme.Light.Name = "Light".ToLowerInvariant();
                         return MenuTheme.Light;
                     case LeftMenuThemeEnum.Dark:
-                        MenuTheme.Dark.Value = 2;
-                        MenuTheme.Dark.Name = "Dark".ToLowerInvariant();
+                        //MenuTheme.Dark.Value = 2;
+                        //MenuTheme.Dark.Name = "Dark".ToLowerInvariant();
                         return MenuTheme.Dark;
                     default:
                         return MenuTheme.Dark;

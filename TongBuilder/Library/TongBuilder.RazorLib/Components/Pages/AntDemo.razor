@@ -27,11 +27,11 @@
 </div>
 <div class="icons-list">
     <Icon Type="home" />
-    <Icon Type="setting" Theme="fill" />
-    <Icon Type="smile" Theme="outline" />
-    <Icon Type="sync" Theme="outline" Spin />
-     <Icon Type="smile" Theme="outline" Rotate="180" />
-     <Icon Type="loading" Theme="outline" />
+    <Icon Type="setting" Theme="@IconThemeType.Fill" />
+    <Icon Type="smile" Theme="@IconThemeType.Outline" />
+    <Icon Type="sync" Theme="@IconThemeType.Outline" Spin />
+    <Icon Type="smile" Theme="@IconThemeType.Outline" Rotate="180" />
+    <Icon Type="loading" Theme="@IconThemeType.Outline" />
  </div>
 
  <div class="icons-list">
@@ -65,7 +65,7 @@
 
 @code {
     private int currentCount = 0;
-    string _size = ButtonSize.Large;
+    ButtonSize _size = ButtonSize.Large;
 
     private void IncrementCount()
     {

@@ -13,11 +13,11 @@
 <div style="padding-bottom:10px;display:flex;justify-content:space-between;">
     <div>
         <RangePicker @bind-Value="dates" />
-        <Button Type="primary" OnClick="OnQuery">查询</Button>
+        <Button Type="@ButtonType.Primary" OnClick="OnQuery">查询</Button>
     </div>
     <div style="text-align:right;">
         @* 添加新增按钮 *@
-        <Button Type="primary" Icon="plus" OnClick="OnNew">新增</Button>
+        <Button Type="@ButtonType.Primary" Icon="plus" OnClick="OnNew">新增</Button>
     </div>
 </div>
 
@@ -29,7 +29,7 @@
        @bind-PageIndex="criteria.PageIndex"
        @bind-PageSize="criteria.PageSize"
        OnChange="OnChange"
-       Size="TableSize.Small"
+       Size="@TableSize.Small"
        RowKey="x=>x.Id"
        PaginationPosition="bottomRight">
     @* 分页显示在右下角 *@
@@ -44,7 +44,7 @@
             <ChildContent>
                 @if (context.TemperatureC > 30)
                 {
-                    <Tag Color="volcano">@context.TemperatureC</Tag>
+                    <Tag Color="@TagColor.Volcano">@context.TemperatureC</Tag>
                 }
                 else
                 {
@@ -58,10 +58,10 @@
         </PropertyColumn>
         <PropertyColumn Property="c=>c.Summary" />
         @* 添加操作列 *@
-        <ActionColumn Title="操作" Fixed="true" Width="120">
+        <ActionColumn Title="操作" Fixed="@ColumnFixPlacement.Left" Width="120">
             <div style="display:flex;">
-                <Tag Color="blue-inverse" OnClick="e=>OnEdit(context)">编辑</Tag>
-                <Tag Color="red-inverse" OnClick="e=>OnDelete(context)">删除</Tag>
+                <Tag Color="@TagColor.BlueInverse" OnClick="e=>OnEdit(context)">编辑</Tag>
+                <Tag Color="@TagColor.RedInverse" OnClick="e=>OnDelete(context)">删除</Tag>
             </div>
         </ActionColumn>
     </ChildContent>

@@ -1,0 +1,85 @@
+﻿@page "/static-asset-example"
+@using Microsoft.Extensions.Logging
+@using TongBuilder.Contract.Contracts;
+@implements IAsyncDisposable
+@inject IJSRuntime JS
+@inject ILogger<StaticAssetExample> Logger
+@inject IReadFile ReadFile
+
+
+<h1>Static Asset Example</h1>
+
+<h2>Read a file</h2>
+
+<p>@dataResourceText</p>
+
+<h2>Call JavaScript</h2>
+
+<p>
+    <button @onclick="TriggerPrompt">Trigger browser window prompt</button>
+</p>
+
+<p>@result</p>
+
+<h2>Show an image</h2>
+
+<p><img alt="1991 Jeep YJ" src="./_content/TongBuilder.RazorLib/jeep-yj.png" /></p> @* /jeep-yj.png *@
+
+<p>
+    <em>Jeep</em> and <em>Jeep YJ</em> are registered trademarks of
+    <a href="https://www.stellantis.com">FCA US LLC (Stellantis NV)</a>.
+</p>
+
+@code {
+    private string dataResourceText = "Loading resource ...";
+    private IJSObjectReference? module;
+    private string result;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            //dataResourceText = await ReadFile.ReadContentAsync("data.txt");// data.txt
+            dataResourceText = await ReadFile.ReadContentAsync("wwwroot/_content/TongBuilder.RazorLib/data.txt");// /wwwroot/data.txt
+            //dataResourceText = await ReadFile.ReadContentAsync("wwwroot/data.txt");// /wwwroot/data.txt
+        }
+        catch (FileNotFoundException ex)
+        {
+            dataResourceText = "Data file not found.";
+            Logger.LogError(ex, "'wwwroot/data.txt' not found.");
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {            
+            //module = await JS.InvokeAsync<IJSObjectReference>("import", "./scripts.js");
+            //module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/TongBuilder.RazorLib/scripts.js");
+            module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/TongBuilder.RazorLib/Components/Pages/StaticAssetExample.razor.js");
+        }
+    }
+        
+
+    private async Task TriggerPrompt()
+    {
+        result = await Prompt("Provide some text");
+    }
+
+    public async ValueTask<string> Prompt(string message) =>
+        module is not null ? await module.InvokeAsync<string>("showPrompt", message) : null;
+
+    async ValueTask IAsyncDisposable.DisposeAsync()
+    {
+        if (module is not null)
+        {
+            try
+            {
+                await module.DisposeAsync();
+            }
+            catch (JSDisconnectedException)
+            {
+            }
+        }
+    }
+}
