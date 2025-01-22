@@ -7,6 +7,7 @@ using TongBuilder.RazorLib.Services;
 using TongBuilder.Application.DependencyInjection;
 using TongBuilder.Contract.Contracts;
 using TongBuilder.Application.Services;
+using Blazing.Mvvm;
 
 namespace TongBuilder.BlazorWPF.Client
 {
@@ -109,6 +110,11 @@ namespace TongBuilder.BlazorWPF.Client
             services.AddClientBusiness(configuration);
             services.AddCommonServices(configuration);   
             services.AddTransient(typeof(MainWindow));
+
+            services.AddMvvm(options =>
+            {
+                options.HostingModelType = BlazorHostingModelType.Hybrid;
+            });
 
             Resources.Add("services", services.BuildServiceProvider());
 

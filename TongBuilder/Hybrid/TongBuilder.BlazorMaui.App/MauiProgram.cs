@@ -6,6 +6,7 @@ using NLog;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
 using TongBuilder.BlazorMaui.App.Services;
+using Blazing.Mvvm;
 
 namespace TongBuilder.BlazorMaui.App
 {
@@ -35,6 +36,11 @@ namespace TongBuilder.BlazorMaui.App
 #endif
                 builder.Services.AddSingleton<IFormFactor, FormFactor>();
                 builder.Services.AddSingleton<IReadFile, Services.ReadFile>();
+
+                builder.Services.AddMvvm(options =>
+                {
+                    options.HostingModelType = BlazorHostingModelType.HybridMaui;
+                });
 
                 //1：Only for windows
                 //var config = new ConfigurationBuilder().AddJsonFile("wwwroot/appsettings.json").Build();

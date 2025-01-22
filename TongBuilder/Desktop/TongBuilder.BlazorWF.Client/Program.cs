@@ -6,6 +6,7 @@ using TongBuilder.Application.DependencyInjection;
 using System.Diagnostics;
 using TongBuilder.Contract.Contracts;
 using TongBuilder.Application.Services;
+using Blazing.Mvvm;
 
 
 namespace TongBuilder.BlazorWF.Client
@@ -114,7 +115,12 @@ namespace TongBuilder.BlazorWF.Client
             services.AddSingleton<IReadFile, ReadFile>();
             services.AddClientBusiness(configuration);
             services.AddCommonServices(configuration);
-            
+
+            services.AddMvvm(options =>
+            {
+                options.HostingModelType = BlazorHostingModelType.Hybrid;
+            });
+
             services.AddScoped<MainPage>();
 
         }

@@ -7,6 +7,7 @@ using NLog.Web;
 using TongBuilder.Application.Server.Auth;
 using TongBuilder.Contract.Contracts;
 using TongBuilder.Application.Services;
+using Blazing.Mvvm;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromFile("NLog.config").GetCurrentClassLogger();
 logger.Info("Starting up");
@@ -51,7 +52,10 @@ try
     builder.Services.AddAuthorization();//基于角色的授权和基于Scheme的授权，只是一种语法上的便捷，最终都会生成授权策略
     builder.Services.AddJwtAuthentication(builder.Configuration.GetSection("JwtSettings"));
 
-
+    builder.Services.AddMvvm(options =>
+    {
+        options.HostingModelType = BlazorHostingModelType.Server;
+    });
     var app = builder.Build();
 
     // Configure the HTTP request pipeline.

@@ -1,0 +1,53 @@
+﻿@page "/keypad"
+@using TongBuilder.BlazorMaui.App.ViewModels
+
+<h1>Keypad</h1>
+
+<table id="keypad">
+    <thead>
+        <tr>
+            <th colspan="2">@KeypadViewModel.DisplayText</th>
+            <th><button @onclick="DeleteChar">&#x21E6;</button></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><button @onclick="@(e => AddChar("1"))">1</button></td>
+            <td><button @onclick="@(e => AddChar("2"))">2</button></td>
+            <td><button @onclick="@(e => AddChar("3"))">3</button></td>
+        </tr>
+        <tr>
+            <td><button @onclick="@(e => AddChar("4"))">4</button></td>
+            <td><button @onclick="@(e => AddChar("5"))">5</button></td>
+            <td><button @onclick="@(e => AddChar("6"))">6</button></td>
+        </tr>
+        <tr>
+            <td><button @onclick="@(e => AddChar("7"))">7</button></td>
+            <td><button @onclick="@(e => AddChar("8"))">8</button></td>
+            <td><button @onclick="@(e => AddChar("9"))">9</button></td>
+        </tr>
+        <tr>
+            <td><button @onclick="@(e => AddChar("*"))">*</button></td>
+            <td><button @onclick="@(e => AddChar("0"))">0</button></td>
+            <td><button @onclick="@(e => AddChar("#"))">#</button></td>
+        </tr>
+    </tbody>
+</table>
+
+@code {
+    [CascadingParameter]
+    protected KeypadViewModel KeypadViewModel { get; set; }
+
+    private void DeleteChar()
+    {
+        if (KeypadViewModel.DeleteCharCommand.CanExecute(null))
+        {
+            KeypadViewModel.DeleteCharCommand.Execute(null);
+        }
+    }
+
+    private void AddChar(string key)
+    {
+        KeypadViewModel.AddCharCommand.Execute(key);
+    }
+}

@@ -7,6 +7,7 @@ using NLog.Web;
 using TongBuilder.Application.Server.Auth;
 using TongBuilder.Contract.Contracts;
 using TongBuilder.Application.Services;
+using Blazing.Mvvm;
 
 namespace TongBuilder.BlazorWeb
 {
@@ -39,6 +40,11 @@ namespace TongBuilder.BlazorWeb
                 builder.Services.AddScoped<IWeatherForecastService, TongBuilder.BlazorWeb.Services.WeatherForecastService>();
 
                 builder.Services.AddHttpContextAccessor();
+
+                builder.Services.AddMvvm(options =>
+                {
+                    options.HostingModelType = BlazorHostingModelType.WebApp;
+                });
 
                 var app = builder.Build();
 

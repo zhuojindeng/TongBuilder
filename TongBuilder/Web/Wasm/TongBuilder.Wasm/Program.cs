@@ -6,6 +6,7 @@ using TongBuilder.Application.DependencyInjection;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using TongBuilder.Contract.Contracts;
 using TongBuilder.Application.Services;
+using Blazing.Mvvm;
 
 namespace TongBuilder.Wasm
 {
@@ -44,7 +45,10 @@ namespace TongBuilder.Wasm
             builder.Services.AddSingleton<IReadFile, ReadFile>();
             builder.Services.AddClientBusiness(builder.Configuration, builder.HostEnvironment.BaseAddress);//
             builder.Services.AddCommonServices(builder.Configuration);
-
+            builder.Services.AddMvvm(options =>
+            {
+                options.HostingModelType = BlazorHostingModelType.WebAssembly;
+            });
             var host = builder.Build();
 
             var logger = host.Services.GetRequiredService<ILoggerFactory>()

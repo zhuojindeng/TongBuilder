@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components.WebView;
+using TongBuilder.BlazorMaui.App.ViewModels;
 
 namespace TongBuilder.BlazorMaui.App
 {
@@ -17,6 +18,11 @@ namespace TongBuilder.BlazorMaui.App
                     }
                 };
             //blazorWebView.StartPath = "/welcome";
+            rootComponent.Parameters =
+                new Dictionary<string, object>
+                {
+                    { "KeypadViewModel", new KeypadViewModel() }
+                };
         }
     }
 }

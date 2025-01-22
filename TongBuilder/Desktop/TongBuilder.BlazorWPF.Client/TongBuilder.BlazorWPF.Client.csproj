@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blazing.Mvvm" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="9.0.30" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.1" />
   </ItemGroup>
@@ -73,6 +74,7 @@
 
   <ItemGroup>
     <Folder Include="Components\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
