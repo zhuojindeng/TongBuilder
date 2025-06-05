@@ -43,17 +43,17 @@ namespace TongBuilder.RazorLib.Components.Pages.User.Login
                 if (result.Succeeded)
                 {                    
                     NavigationManager.NavigateTo("/");
-                    await Message.Success("登录成功");
+                    await Message.SuccessAsync("登录成功");
                 }
                 else
                 {
                     loading = false;
-                    await Message.Warning(result.ErrorMsg);
+                    await Message.WarningAsync(result.ErrorMsg);
                 }
             }
             catch (System.Exception ex)
             {
-                await Message.Error(ex.Message);
+                await Message.ErrorAsync(ex.Message);
             }
             finally
             {
@@ -64,7 +64,7 @@ namespace TongBuilder.RazorLib.Components.Pages.User.Login
         public async Task GetCaptcha()
         {
             var captcha = await ((TongAuthenticationStateProvider)AuthStateProvider).GetCaptchaAsync(_model.PhoneNumber);
-            await Message.Success($"Verification code validated successfully! The verification code is: {captcha}");
+            await Message.SuccessAsync($"Verification code validated successfully! The verification code is: {captcha}");
         }
     }
 }

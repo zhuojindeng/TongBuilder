@@ -29,8 +29,8 @@
 
   <ItemGroup>
     <PackageReference Include="Blazing.Mvvm" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="9.0.30" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="9.0.70" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.5" />
   </ItemGroup>
 
   <ItemGroup>
