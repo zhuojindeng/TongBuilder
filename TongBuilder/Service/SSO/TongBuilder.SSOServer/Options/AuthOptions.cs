@@ -9,6 +9,9 @@ namespace TongBuilder.SSOServer.Options
         /// </summary>
         public int AccessTokenLifetime { get; set; } = 60 * 24 * 7;
 
+        /// <summary>
+        /// Token 签发者
+        /// </summary>
         [AllowNull]
         public string Issuer { get; set; }
     }

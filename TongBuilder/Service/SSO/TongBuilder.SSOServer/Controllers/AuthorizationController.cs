@@ -81,9 +81,18 @@ namespace TongBuilder.SSOServer.Controllers
         }
         #region Authorization code, implicit and hybrid flows
         /// <summary>
-        /// 客户端发起登录权限校验（ for AuthorizationCodeFlow）,
+        /// 客户端发起登录权限校验（ for AuthorizationCodeFlow）,用户码认证请求
         /// 返回authorization code which the client can exchange for an access token by calling the token endpoint.
         /// </summary>
+        /// <remarks>
+        /// 1. The client initiates the authorization process by sending an HTTP request to the authorization endpoint.
+        /// 2. The authorization endpoint redirects the user to the authorization server's login page.
+        /// 3. The user logs in to the authorization server and grants or denies the client application's access request.
+        /// 4. The authorization server redirects the user back to the client application with an authorization code.
+        /// 5. The client application uses the authorization code to request an access token from the authorization server's token endpoint.
+        /// 6. The authorization server validates the authorization code and issues an access token to the client application.
+        /// 7. The client application uses the access token to access the protected resources on behalf of the user. 
+        /// </remarks>
         /// <returns></returns>
         /// <exception cref="InvalidOperationException"></exception>
         /// <exception cref="Exception"></exception>

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -9,13 +9,13 @@
   <ItemGroup>
     <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
     <PackageReference Include="McMaster.NETCore.Plugins.Mvc" Version="2.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Abstractions" Version="2.3.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.5" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.5" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="9.0.5" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.5" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.5" />
-    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.12.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Abstractions" Version="2.3.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="10.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="10.0.5" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.5" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.5" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.17.0" />
   </ItemGroup>
 
   <ItemGroup>

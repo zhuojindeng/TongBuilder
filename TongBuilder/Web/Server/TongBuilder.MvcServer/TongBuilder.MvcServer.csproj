@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Blazing.Mvvm" Version="2.2.0" />
-    <PackageReference Include="NLog.Web.AspNetCore" Version="5.5.0" />
+    <PackageReference Include="Blazing.Mvvm" Version="3.2.1" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="6.1.2" />
   </ItemGroup>
 
   <ItemGroup>

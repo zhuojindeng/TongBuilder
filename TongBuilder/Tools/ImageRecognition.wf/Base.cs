@@ -31,7 +31,7 @@ namespace ImageRecognition.wf
         /// <returns></returns>
         public static Mat Canny(string imgpath, out long runTime)
         {
-            Mat image = CvInvoke.Imread(imgpath, ImreadModes.Color);
+            Mat image = CvInvoke.Imread(imgpath, ImreadModes.ColorBgr);
             Stopwatch sp = new Stopwatch();
             sp.Start();
 

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net9.0-windows7.0</TargetFramework>
+    <TargetFramework>net10.0-windows7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -19,9 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Blazing.Mvvm" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="9.0.70" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.5" />
+    <PackageReference Include="Blazing.Mvvm" Version="3.2.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="10.0.51" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.5" />
   </ItemGroup>
 
   <ItemGroup>
